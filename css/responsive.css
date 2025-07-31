@@ -186,10 +186,6 @@
         width: 85%;
     }
 
-    .menu_text {
-        width: 40%;
-    }
-
     .banner_section {
         padding-top: 50px;
     }
@@ -348,7 +344,6 @@
     }
 
     .menu_text {
-        width: 46%;
         padding-top: 0px;
     }
 
@@ -787,7 +782,7 @@
     }
 
     .toggle_menu {
-        top: -35px;
+        top: -70px;
         float: right;
     }
 
@@ -804,10 +799,12 @@
 
     .banner_taital {
         font-size: 32px;
+        text-align: center;
     }
 
     .banner_taital_1 {
         font-size: 38px;
+        text-align: center;
     }
 
     .banner_text {
