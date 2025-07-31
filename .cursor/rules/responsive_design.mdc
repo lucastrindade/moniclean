@@ -1,0 +1,110 @@
+---
+description: Responsive design consistency requirements for CSS changes across all breakpoints
+globs: ["**/*.css", "**/*.html"]
+alwaysApply: true
+---
+# Responsive Design Rule
+
+**Whenever the design is changed, you must also check the responsive.css file.**
+
+## Core Principles
+- All design changes must consider both desktop and mobile layouts
+- Responsive breakpoints must be maintained across all screen sizes
+- Menu functionality and positioning must work on all devices
+- Font sizes and layouts must adapt appropriately
+
+## Main Style Files
+- **Primary:** `css/style.css` - Main stylesheet containing desktop/tablet styles
+- **Responsive:** `css/responsive.css` - Contains all responsive breakpoints and mobile-specific styles
+
+## Breakpoints in responsive.css
+- **Desktop/Tablet:** `@media (min-width: 992px) and (max-width: 1199px)`
+- **Tablet:** `@media (min-width: 768px) and (max-width: 991px)`
+- **Large Mobile:** `@media (min-width: 576px) and (max-width: 767px)`
+- **Mobile:** `@media (max-width: 575px)`
+
+## Key Responsive Elements
+- `.toggle_menu` - Menu positioning changes across breakpoints
+- `.togle_3` - Register/Login elements hidden on mobile
+- `.banner_taital` - Font sizes adjust for different screen sizes
+- `.menu_text` - Menu container width and positioning
+
+## Examples
+
+### ✅ Correct: Checking Both Files
+```css
+/* style.css - Desktop styles */
+.banner_taital {
+    font-size: 38px;
+    color: #181919;
+}
+
+/* responsive.css - Mobile adjustments */
+@media (max-width: 575px) {
+    .banner_taital { 
+        font-size: 32px; 
+    }
+}
+```
+
+### ❌ Incorrect: Only Changing Desktop Styles
+```css
+/* style.css - Only desktop changes */
+.banner_taital {
+    font-size: 45px; /* Changed but no mobile consideration */
+}
+
+/* Missing responsive.css updates for mobile */
+```
+
+### ✅ Correct: Menu Positioning
+```css
+/* style.css */
+.toggle_menu {
+    top: 8px;
+    position: relative;
+}
+
+/* responsive.css */
+@media (max-width: 575px) {
+    .toggle_menu { 
+        top: -35px; 
+        float: right; 
+    }
+}
+```
+
+### ❌ Incorrect: Breaking Mobile Menu
+```css
+/* style.css */
+.toggle_menu {
+    position: absolute;
+    right: 0;
+    /* This breaks mobile layout */
+}
+
+/* Missing responsive override */
+```
+
+## Implementation Guidelines
+
+### Checklist for Design Changes:
+1. ✅ Make changes to `style.css` (desktop styles)
+2. ✅ Check `responsive.css` for corresponding breakpoints
+3. ✅ Update responsive styles if needed
+4. ✅ Test across different screen sizes
+5. ✅ Ensure mobile menu functionality remains intact
+
+### Common Responsive Issues to Avoid:
+- Menu positioning (`float: right` on mobile)
+- Font size adjustments for readability
+- Layout changes (column stacking on mobile)
+- Element hiding/showing based on screen size
+
+## Benefits
+- Maintains consistent user experience across all devices
+- Prevents layout breaking on mobile devices
+- Ensures proper menu functionality on touch devices
+- Keeps typography readable on small screens
+
+**Remember:** Any design change that affects layout, positioning, or styling must be checked against all responsive breakpoints to maintain consistency across devices.

@@ -1,0 +1,27 @@
+---
+description: Always check for relevant rules before proceeding with any task
+globs:
+alwaysApply: true
+---
+# Always Check Rules First
+
+Before answering any question or performing any task:
+
+1. **Check available rules first**: Use `fetch_rules` to see what rules exist in the workspace
+2. **Fetch relevant rules**: If you see rules related to your current task, fetch them immediately
+3. **Apply rules before proceeding**: Follow any fetched rules before continuing with the task
+4. **When in doubt, fetch**: If you're unsure whether a rule exists or applies, fetch it
+
+**Common scenarios where rules are especially important:**
+- **Testing**: Look for testing-related rules before running or writing tests
+- **Code quality**: Check for coding standards, linting, or formatting rules
+- **Database operations**: Look for database-related rules before migrations or queries
+- **API development**: Check for API design or endpoint rules
+- **File operations**: Look for file structure or naming convention rules
+
+**How to check for rules:**
+- Use `fetch_rules` with relevant rule names you see in the available rules list
+- If you don't see specific rules, proceed with best practices
+- Always prioritize workspace-specific rules over general assumptions
+
+**Remember**: It's better to check and find no relevant rules than to assume and miss important guidelines. 

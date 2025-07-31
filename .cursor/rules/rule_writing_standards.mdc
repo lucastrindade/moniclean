@@ -1,0 +1,220 @@
+---
+description: Standards and best practices for writing Cursor rules
+globs: 
+alwaysApply: false
+---
+# Cursor Rule Writing Standards
+
+## Core Requirements
+
+### 1. Metadata Structure
+All rules MUST have the three metadata options in this exact order at the **very beginning** of the file:
+```yaml
+---
+description: Clear, descriptive explanation of what the rule covers
+globs: 
+alwaysApply: false
+---
+```
+
+**Requirements:**
+- **description**: MANDATORY - Must have a value, cannot be empty
+- **globs**: REQUIRED field - Can be empty (`globs: `) but must be present
+- **alwaysApply**: REQUIRED - Should be `false` unless strictly necessary
+- **placement**: MANDATORY - Metadata MUST be at the very beginning of the file, before any content
+
+### 2. File Format
+- **File Extension**: **MUST** use `.mdc` (not `.md`).
+- **File Naming**: **MUST** use underscores `_` for separators.
+  - ✅ `rule_name_goes_here.mdc`
+  - ❌ `rule-name-goes-here.mdc`
+- **Location**: **MUST** be placed in the `.cursor/rules/` directory only.
+- **Directory Structure**: **NEVER** create `.cursor` directories in other folders.
+
+### 3. Content Quality Standards
+Every rule must score **9 or higher** on a 10-point scale based on:
+- Clear, actionable instructions
+- Comprehensive examples (correct vs incorrect)
+- Proper structure and formatting
+- Domain-specific knowledge capture
+- Practical applicability
+
+## Rule Types and Configuration
+
+### Always Apply (Rarely Used)
+```yaml
+alwaysApply: true
+```
+**Use only when:**
+- Rule applies to ALL files and contexts
+- Rule is critical for project-wide consistency
+- Rule contains fundamental project knowledge
+
+### Auto Attached (File-Specific)
+```yaml
+globs: ["**/*.php"]
+alwaysApply: false
+```
+**Use when:**
+- Rule applies to specific file types
+- Rule should be included when those files are referenced
+- Examples: `["tests/**/*.php"]`, `["**/*.php"]`, `["app/**/*.php"]`
+
+### Agent Requested (AI Judgment)
+```yaml
+globs: 
+alwaysApply: false
+```
+**Use when:**
+- AI should decide when rule is relevant
+- Rule covers broad concepts (bug analysis, code review, etc.)
+- Rule applies to multiple file types or contexts
+
+### Manual (Explicit Request)
+```yaml
+globs: 
+alwaysApply: false
+```
+**Use when:**
+- Rule is specialized and rarely needed
+- Rule requires explicit `@ruleName` invocation
+- Rule contains sensitive or conditional information
+
+## Content Structure
+
+### Required Sections
+1. **Clear title** - Descriptive rule name
+2. **Core principles** - Main concepts and requirements
+3. **Examples** - Correct vs incorrect implementations
+4. **Implementation guidelines** - Step-by-step instructions
+5. **Benefits** - Why the rule matters
+
+### Example Structure
+```markdown
+---
+description: Example rule description
+globs: 
+alwaysApply: false
+---
+# Rule Name
+
+## Core Principles
+- Clear, actionable guidelines
+- Specific requirements
+
+## Examples
+
+### ✅ Correct:
+```code
+// Good implementation
+```
+
+### ❌ Incorrect:
+```code
+// Bad implementation
+```
+
+## Implementation Guidelines
+1. Step-by-step instructions
+2. Specific requirements
+3. Common patterns
+
+## Benefits
+- Why this rule matters
+- What problems it solves
+```
+
+## Description Guidelines
+
+### ✅ Good Descriptions:
+- `"PHPUnit data provider naming conventions and best practices"`
+- `"Floating-point math operations using helper functions for precision and consistency"`
+- `"Comprehensive bug analysis and testing approach for systematic issue resolution"`
+- `"PHP code review mindset and best practices for understanding existing patterns"`
+
+### ❌ Bad Descriptions:
+- `"When you need to run a php command"` (starts with "When")
+- `"Rules to follow when writing test cases"` (too vague)
+- `"Nix shell and mutagen setup requirements"` (unclear purpose)
+- `""` (empty description)
+
+## Examples of High-Quality Rules
+
+### ✅ Excellent Rule (Score: 10/10)
+```yaml
+---
+description: PHPUnit data provider naming conventions and best practices
+globs: ["tests/**/*.php"]
+alwaysApply: false
+---
+# Data Provider Naming Convention
+
+## Rule: Data Provider Methods Must Start with "provides"
+
+All PHPUnit data provider methods should follow the naming convention...
+
+### Examples:
+✅ **Correct:**
+```php
+public static function providesPendingStatuses(): iterable
+```
+
+❌ **Incorrect:**
+```php
+public static function pendingStatusesDataProvider(): iterable
+```
+```
+
+### ❌ Poor Rule (Score: 3/10)
+```yaml
+---
+description: 
+globs: 
+alwaysApply: true
+---
+### PHP Template Method Pattern Recognition
+- **When you see `$this->getVersion()`**: This is a template method pattern
+```
+
+## Quality Checklist
+
+Before submitting any rule, ensure:
+
+- [ ] **Metadata at beginning**: Frontmatter is the very first thing in the file
+- [ ] **Metadata complete**: description, globs, alwaysApply all present
+- [ ] **File format**: `.mdc` extension, in `.cursor/rules/` directory
+- [ ] **File Naming**: Filename uses underscores for separators (`my_rule.mdc`)
+- [ ] **Description quality**: Clear, specific, no "When" starters
+- [ ] **Content structure**: Proper headers, examples, guidelines
+- [ ] **Examples provided**: Correct vs incorrect implementations
+- [ ] **Actionable**: Clear instructions on what to do
+- [ ] **Domain-specific**: Captures project-specific knowledge
+- [ ] **Score 9+**: Meets quality standards for clarity and usefulness
+
+## Common Mistakes to Avoid
+
+1. **Metadata not at beginning** - Frontmatter must be the first thing in the file
+2. **Missing metadata fields** - All three must be present
+3. **Empty description** - Description is mandatory
+4. **Wrong file extension** - Use `.mdc`, not `.md`
+5. **Wrong directory** - Only use `.cursor/rules/`
+6. **Incorrect filename** - Using hyphens instead of underscores for separators
+6. **Vague descriptions** - Be specific about what the rule covers
+7. **No examples** - Always include correct vs incorrect examples
+8. **Overuse of alwaysApply** - Only use `true` when absolutely necessary
+9. **Poor structure** - Use proper headers and sections
+
+## Rule Generation Process
+
+When creating new rules:
+
+1. **Start with frontmatter** - Write metadata first, at the very beginning
+2. **Identify the need** - What domain knowledge needs to be captured?
+3. **Choose appropriate type** - Always, Auto Attached, Agent Requested, or Manual
+4. **Write clear description** - Specific, actionable, no "When" starters
+5. **Structure content** - Use proper headers and sections
+6. **Include examples** - Show correct vs incorrect implementations
+7. **Test quality** - Ensure it scores 9+ on the quality scale
+8. **Place correctly** - In `.cursor/rules/` with `.mdc` extension
+
+Remember: Rules are the primary way to encode domain-specific knowledge and ensure consistent AI behavior across your codebase.
