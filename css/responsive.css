@@ -149,7 +149,8 @@ width: 30%;
 .image_1 { width: 85%; }
 .menu_text { width: 40%; }
 .banner_section { padding-top: 50px; }
-.banner_taital_1 { font-size: 50px; }
+.banner_taital_1 { font-size: 36px; }
+.banner_taital { font-size: 32px; }
 .banner_text { width: 93%;  font-size: 16px; margin: 0px 0px 15px 0px; }
 .header_section { padding-top: 15px; padding-bottom: 160px; background-size: cover; }
 .play_icon { margin-top: 40px; }
@@ -212,7 +213,7 @@ width: 30%;
 
 .menu_text { width: 46%; padding-top: 0px; }
 .banner_section { padding-top: 50px; }
-.banner_taital_1 { font-size: 36px; }
+.banner_taital_1 { font-size: 42px; }
 .banner_taital { font-size: 36px; }
 .banner_text { width: 100%;  font-size: 14px; margin: 0px; }
 .header_section { padding-top: 15px; padding-bottom: 120px; background-size: cover; }
@@ -289,7 +290,7 @@ padding: 126px 40px;
 .header_section { background-size: cover; padding-top: 15px; padding-bottom: 90px; background: #89cbeb; }
 .banner_section { padding-top: 30px; }
 .banner_taital { font-size: 28px; }
-.banner_taital_1 { font-size: 28px; }
+.banner_taital_1 { font-size: 32px; }
 .banner_text { width: 100%; font-size: 13px; }
 .image_1 { padding-top: 20px; } 
 .services_taital {font-size: 29px; }
@@ -406,7 +407,8 @@ ul.link li {
 .toggle_menu { top: -35px; float: right; }
 .header_section { background-size: cover; padding-top: 15px; padding-bottom: 90px; background: #89cbeb; }
 .banner_section { padding-top: 30px; }
-.banner_taital_1 { font-size: 42px; }
+.banner_taital { font-size: 32px; }
+.banner_taital_1 { font-size: 38px; }
 .banner_text { width: 100%; font-size: 15px; }
 .play_icon { display: none; }
 .image_1 { padding-top: 20px; } 

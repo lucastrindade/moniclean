@@ -288,7 +288,7 @@ button {
 }
 .menu_text {
     float: right;
-    width: 30%;
+    width: 13%;
     padding-top: 15px;
 }
 .search_icon{ width: 100%; float: left; }
@@ -309,18 +309,20 @@ button {
 .banner_taital{
     width: 100%;
     float: left;
-    font-size: 40px;
-    color: #181919;
+    font-size: 38px;
+    color: #084f70;
     font-weight: bold;
     text-transform: uppercase;
+    text-align: center;
 }
 .banner_taital_1{
     width: 100%;
     float: left;
-    font-size: 55px;
+    font-size: 44px;
     color: #ffffff;
     font-weight: bold;
     text-transform: uppercase;
+    text-align: center;
 }
 .banner_text{
     width: 80%;
@@ -328,6 +330,11 @@ button {
     font-size: 16px;
     color: #f8fdfe;
     margin-left: 0px;
+}
+
+.banner_text strong {
+    color: #084f70;
+    font-weight: bold;
 }
 .contact_bt{
     width: 170px;
