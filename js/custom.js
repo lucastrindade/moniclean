@@ -62,6 +62,27 @@ $(function () {
 		$('select').niceSelect();
 	});	
 		
+	/* Bootstrap Carousel Active Class Management
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(document).ready(function() {
+		// Handle active class for both desktop and mobile carousels
+		$('#main_slider_desktop, #main_slider_mobile').on('slid.bs.carousel', function (e) {
+			var carouselId = $(this).attr('id');
+			var currentSlide = e.to;
+			
+			// Remove active class from all content elements in this carousel
+			$('#' + carouselId + ' .box_section').removeClass('active');
+			$('#' + carouselId + ' .tile_text').removeClass('active');
+			$('#' + carouselId + ' .lorem_text').removeClass('active');
+			
+			// Add active class to the current slide's content elements
+			$('#' + carouselId + ' .carousel-item').eq(currentSlide).find('.box_section').addClass('active');
+			$('#' + carouselId + ' .carousel-item').eq(currentSlide).find('.tile_text').addClass('active');
+			$('#' + carouselId + ' .carousel-item').eq(currentSlide).find('.lorem_text').addClass('active');
+		});
+	});
+
 	/* OwlCarousel - Blog Post slider
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 	

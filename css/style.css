@@ -473,22 +473,49 @@ button {
     border: 1px solid #89cbeb;
 }
 
-.tiles_img {
+/* Service Icon Styles - Single, clean approach */
+.service-icon {
     width: 74px;
+    height: 90px;
     margin: 0 auto;
-    text-align: center;
-    min-height: 90px;
-    background-image: url(../images/tiles-img.png);
-    background-repeat: no-repeat;
+    display: block;
+    object-fit: contain;
 }
 
-.tiles_img_1 {
+.service-icon-inactive {
     width: 74px;
+    height: 90px;
     margin: 0 auto;
-    text-align: center;
-    min-height: 90px;
-    background-image: url(../images/carpet-img.png);
-    background-repeat: no-repeat;
+    display: none; /* Hidden by default */
+    object-fit: contain;
+}
+
+/* Show inactive image when box_section is not active */
+.box_section:not(.active) .service-icon {
+    display: none;
+}
+
+.box_section:not(.active) .service-icon-inactive {
+    display: block;
+}
+
+/* Text color for active vs inactive states */
+.box_section:not(.active) .tile_text {
+    color: #084f70;
+}
+
+.box_section:not(.active) .lorem_text {
+    color: #084f70;
+}
+
+.box_section:hover .service-icon,
+.box_section:hover .service-icon-inactive {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.box_section.active .service-icon {
+    filter: brightness(1.2);
 }
 
 .tile_text {

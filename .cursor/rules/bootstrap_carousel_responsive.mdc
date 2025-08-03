@@ -3,6 +3,7 @@ description: How to properly implement carousels for desktop and mobile
 globs:
 alwaysApply: false
 ---
+
 # Bootstrap Carousel Responsive Implementation
 
 ## Core Principles
@@ -28,13 +29,15 @@ When implementing responsive Bootstrap carousels that show different numbers of 
         <!-- Service 1 -->
         <div class="col-md-6">
           <div class="box_section active">
-            <h3 class="tile_text">Service Title</h3>
-            <p class="lorem_text">Service description</p>
+            <img src="images/service-icon.png" alt="Service Name" class="service-icon">
+            <h3 class="tile_text active">Service Title</h3>
+            <p class="lorem_text active">Service description</p>
           </div>
         </div>
         <!-- Service 2 -->
         <div class="col-md-6">
           <div class="box_section">
+            <img src="images/another-service-icon.png" alt="Another Service" class="service-icon">
             <h3 class="tile_text">Another Service</h3>
             <p class="lorem_text">Another service description</p>
           </div>
@@ -53,13 +56,20 @@ When implementing responsive Bootstrap carousels that show different numbers of 
 
 <!-- Mobile Carousel (1 item per slide) - Hidden on desktop -->
 <div id="main_slider_mobile" class="carousel slide d-md-none" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#main_slider_mobile" data-slide-to="0" class="active"></li>
+    <li data-target="#main_slider_mobile" data-slide-to="1"></li>
+    <li data-target="#main_slider_mobile" data-slide-to="2"></li>
+    <li data-target="#main_slider_mobile" data-slide-to="3"></li>
+  </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
       <div class="row">
         <div class="col-12">
           <div class="box_section active">
-            <h3 class="tile_text">Service Title</h3>
-            <p class="lorem_text">Service description</p>
+            <img src="images/service-icon.png" alt="Service Name" class="service-icon">
+            <h3 class="tile_text active">Service Title</h3>
+            <p class="lorem_text active">Service description</p>
           </div>
         </div>
       </div>
@@ -140,6 +150,27 @@ When implementing responsive Bootstrap carousels that show different numbers of 
     #main_slider_mobile a.carousel-control-next {
         right: -17px;
     }
+}
+```
+
+### Service Icon Styles (Clean, Non-Repetitive):
+```css
+/* Service Icon Styles - Single, clean approach */
+.service-icon {
+    width: 74px;
+    height: 90px;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+}
+
+.box_section:hover .service-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.box_section.active .service-icon {
+    filter: brightness(1.2);
 }
 ```
 
@@ -236,6 +267,11 @@ When implementing responsive Bootstrap carousels that show different numbers of 
 - [ ] Mobile shows 1 item per slide
 - [ ] Navigation controls work for both carousels
 - [ ] Touch/swipe functionality works on mobile
+- [ ] Carousel loops properly on both devices
+- [ ] Items are properly aligned and spaced
+- [ ] No visual conflicts between carousels
+- [ ] Responsive breakpoints work correctly
+
 - [ ] Carousel loops properly on both devices
 - [ ] Items are properly aligned and spaced
 - [ ] No visual conflicts between carousels
