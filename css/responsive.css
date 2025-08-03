@@ -941,8 +941,10 @@
     }
     
     /* Mobile carousel controls styling - matching desktop format */
-    #main_slider a.carousel-control-prev,
-    #main_slider a.carousel-control-next {
+    #main_slider_desktop a.carousel-control-prev,
+    #main_slider_desktop a.carousel-control-next,
+    #main_slider_mobile a.carousel-control-prev,
+    #main_slider_mobile a.carousel-control-next {
         background: #367d99;
         opacity: 1;
         font-size: 30px;
@@ -953,31 +955,34 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 40px;
+        height: 40px;
     }
     
-    #main_slider a.carousel-control-prev {
+    #main_slider_desktop a.carousel-control-prev,
+    #main_slider_mobile a.carousel-control-prev {
         left: -13px;
     }
     
-    #main_slider a.carousel-control-next {
+    #main_slider_desktop a.carousel-control-next,
+    #main_slider_mobile a.carousel-control-next {
         right: -13px;
     }
     
-    #main_slider a.carousel-control-prev:hover,
-    #main_slider a.carousel-control-next:hover,
-    #main_slider a.carousel-control-prev:focus,
-    #main_slider a.carousel-control-next:focus {
+    #main_slider_desktop a.carousel-control-prev:hover,
+    #main_slider_desktop a.carousel-control-next:hover,
+    #main_slider_desktop a.carousel-control-prev:focus,
+    #main_slider_desktop a.carousel-control-next:focus,
+    #main_slider_mobile a.carousel-control-prev:hover,
+    #main_slider_mobile a.carousel-control-next:hover,
+    #main_slider_mobile a.carousel-control-prev:focus,
+    #main_slider_mobile a.carousel-control-next:focus {
         background: #367d99;
         color: #fff;
     }
     
-    /* Hide second item on mobile to show only one service at a time */
-    #main_slider .carousel-item .col-md-6:nth-child(2) {
-        display: none;
-    }
-    
-    /* Make first item take full width on mobile */
-    #main_slider .carousel-item .col-md-6:first-child {
+    /* Mobile carousel specific styles */
+    #main_slider_mobile .carousel-item .col-12 {
         width: 100%;
         max-width: 100%;
         flex: 0 0 100%;

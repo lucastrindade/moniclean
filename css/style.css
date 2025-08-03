@@ -518,14 +518,17 @@ button {
     color: #ffffff;
 }
 
-#main_slider a.carousel-control-next {
+#main_slider_desktop a.carousel-control-next,
+#main_slider_mobile a.carousel-control-next {
     position: absolute;
     right: -30px;
     top: 65%;
 }
 
-#main_slider .carousel-control-prev,
-#main_slider .carousel-control-next {
+#main_slider_desktop .carousel-control-prev,
+#main_slider_desktop .carousel-control-next,
+#main_slider_mobile .carousel-control-prev,
+#main_slider_mobile .carousel-control-next {
     width: 65px;
     height: 65px;
     background: #404040;
@@ -535,17 +538,22 @@ button {
     border-radius: 100%;
 }
 
-#main_slider a.carousel-control-prev {
+#main_slider_desktop a.carousel-control-prev,
+#main_slider_mobile a.carousel-control-prev {
     position: absolute;
     left: -30px;
     top: 65%;
     background: #367d99;
 }
 
-#main_slider .carousel-control-prev:hover,
-#main_slider .carousel-control-next:hover,
-#main_slider .carousel-control-prev:focus,
-#main_slider .carousel-control-next:focus {
+#main_slider_desktop .carousel-control-prev:hover,
+#main_slider_desktop .carousel-control-next:hover,
+#main_slider_desktop .carousel-control-prev:focus,
+#main_slider_desktop .carousel-control-next:focus,
+#main_slider_mobile .carousel-control-prev:hover,
+#main_slider_mobile .carousel-control-next:hover,
+#main_slider_mobile .carousel-control-prev:focus,
+#main_slider_mobile .carousel-control-next:focus {
     background: #367d99;
     color: #fff;
 }

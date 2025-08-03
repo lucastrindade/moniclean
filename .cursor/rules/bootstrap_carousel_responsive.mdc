@@ -1,0 +1,242 @@
+---
+description: How to properly implement carousels for desktop and mobile
+globs:
+alwaysApply: false
+---
+# Bootstrap Carousel Responsive Implementation
+
+## Core Principles
+
+When implementing responsive Bootstrap carousels that show different numbers of items based on screen size:
+
+- **Use separate carousels** for desktop and mobile rather than hiding items
+- **Leverage Bootstrap display utilities** (`d-none d-md-block`, `d-md-none`)
+- **Maintain proper carousel functionality** with independent controls
+- **Follow Bootstrap's responsive breakpoints** (≥768px for desktop)
+- **Ensure clean separation** between mobile and desktop experiences
+
+## Implementation Pattern
+
+### HTML Structure: Two Separate Carousels
+
+```html
+<!-- Desktop Carousel (2 items per slide) - Hidden on mobile -->
+<div id="main_slider_desktop" class="carousel slide d-none d-md-block" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+        <!-- Service 1 -->
+        <div class="col-md-6">
+          <div class="box_section active">
+            <h3 class="tile_text">Service Title</h3>
+            <p class="lorem_text">Service description</p>
+          </div>
+        </div>
+        <!-- Service 2 -->
+        <div class="col-md-6">
+          <div class="box_section">
+            <h3 class="tile_text">Another Service</h3>
+            <p class="lorem_text">Another service description</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="carousel-control-prev" href="#main_slider_desktop" role="button" data-slide="prev">
+    <i class="fa fa-angle-left"></i>
+  </a>
+  <a class="carousel-control-next" href="#main_slider_desktop" role="button" data-slide="next">
+    <i class="fa fa-angle-right"></i>
+  </a>
+</div>
+
+<!-- Mobile Carousel (1 item per slide) - Hidden on desktop -->
+<div id="main_slider_mobile" class="carousel slide d-md-none" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+        <div class="col-12">
+          <div class="box_section active">
+            <h3 class="tile_text">Service Title</h3>
+            <p class="lorem_text">Service description</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="carousel-control-prev" href="#main_slider_mobile" role="button" data-slide="prev">
+    <i class="fa fa-angle-left"></i>
+  </a>
+  <a class="carousel-control-next" href="#main_slider_mobile" role="button" data-slide="next">
+    <i class="fa fa-angle-right"></i>
+  </a>
+</div>
+```
+
+## Key Bootstrap Classes
+
+### Display Utilities:
+- **`d-none d-md-block`**: Hidden on mobile, visible on desktop (≥768px)
+- **`d-md-none`**: Hidden on desktop, visible on mobile (<768px)
+
+### Grid Classes:
+- **`col-md-6`**: 50% width on desktop (≥768px)
+- **`col-12`**: 100% width on all screen sizes
+
+## CSS Requirements
+
+### Desktop and Mobile Carousel Styles:
+```css
+/* Apply styles to both carousels */
+#main_slider_desktop .carousel-control-prev,
+#main_slider_desktop .carousel-control-next,
+#main_slider_mobile .carousel-control-prev,
+#main_slider_mobile .carousel-control-next {
+    width: 65px;
+    height: 65px;
+    background: #404040;
+    opacity: 1;
+    font-size: 30px;
+    color: #ffffff;
+    border-radius: 100%;
+}
+
+#main_slider_desktop a.carousel-control-prev,
+#main_slider_mobile a.carousel-control-prev {
+    position: absolute;
+    left: -30px;
+    top: 65%;
+    background: #367d99;
+}
+
+#main_slider_desktop a.carousel-control-next,
+#main_slider_mobile a.carousel-control-next {
+    position: absolute;
+    right: -30px;
+    top: 65%;
+}
+```
+
+### Mobile-Specific Responsive Styles:
+```css
+@media (max-width: 575px) {
+    #main_slider_desktop a.carousel-control-prev,
+    #main_slider_mobile a.carousel-control-prev,
+    #main_slider_desktop a.carousel-control-next,
+    #main_slider_mobile a.carousel-control-next {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    #main_slider_desktop a.carousel-control-prev,
+    #main_slider_mobile a.carousel-control-prev {
+        left: -17px;
+    }
+    
+    #main_slider_desktop a.carousel-control-next,
+    #main_slider_mobile a.carousel-control-next {
+        right: -17px;
+    }
+}
+```
+
+## Examples
+
+### ✅ Correct: Separate Carousels
+```html
+<!-- Desktop: 2 items per slide -->
+<div id="carousel_desktop" class="carousel slide d-none d-md-block">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+        <div class="col-md-6">Item 1</div>
+        <div class="col-md-6">Item 2</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile: 1 item per slide -->
+<div id="carousel_mobile" class="carousel slide d-md-none">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+        <div class="col-12">Item 1</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### ❌ Incorrect: Hidden Items Approach
+```html
+<div class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+        <div class="col-md-6 col-12">Item 1</div>
+        <div class="col-md-6 col-12 d-none d-md-block">Item 2</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Customization Options
+
+### Different Item Counts:
+**3 items on desktop, 1 on mobile:**
+```html
+<!-- Desktop -->
+<div class="col-md-4">Item 1</div>
+<div class="col-md-4">Item 2</div>
+<div class="col-md-4">Item 3</div>
+
+<!-- Mobile -->
+<div class="col-12">Item 1</div>
+```
+
+**4 items on desktop, 1 on mobile:**
+```html
+<!-- Desktop -->
+<div class="col-md-3">Item 1</div>
+<div class="col-md-3">Item 2</div>
+<div class="col-md-3">Item 3</div>
+<div class="col-md-3">Item 4</div>
+
+<!-- Mobile -->
+<div class="col-12">Item 1</div>
+```
+
+## Implementation Guidelines
+
+1. **Create separate carousel containers** with unique IDs
+2. **Use Bootstrap display utilities** to show/hide appropriately
+3. **Apply styles to both carousel IDs** in CSS
+4. **Ensure navigation controls** target the correct carousel ID
+5. **Test responsive behavior** using browser developer tools
+6. **Maintain consistent styling** across both carousels
+
+## Benefits
+
+- **Clean separation** between mobile and desktop experiences
+- **Proper carousel functionality** with independent controls
+- **No hidden content issues** that could affect SEO
+- **Bootstrap native approach** using built-in utilities
+- **Easy maintenance** with clear structure
+- **Consistent user experience** across devices
+- **Automatic touch/swipe support** on mobile devices
+
+## Testing Checklist
+
+- [ ] Desktop shows correct number of items per slide
+- [ ] Mobile shows 1 item per slide
+- [ ] Navigation controls work for both carousels
+- [ ] Touch/swipe functionality works on mobile
+- [ ] Carousel loops properly on both devices
+- [ ] Items are properly aligned and spaced
+- [ ] No visual conflicts between carousels
+- [ ] Responsive breakpoints work correctly
