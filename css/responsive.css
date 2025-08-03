@@ -296,7 +296,7 @@
     }
 
     #main_slider a.carousel-control-prev {
-        display: none;
+        display: block;
     }
 
     .btn_main {
@@ -305,7 +305,7 @@
     }
 
     #main_slider a.carousel-control-next {
-        display: none;
+        display: block;
     }
 
     .sporrt_text {
@@ -708,16 +708,30 @@
 
     #main_slider a.carousel-control-prev {
         position: absolute;
-        left: 175px;
-        top: 90%;
-        display: none;
+        left: 10px;
+        top: 68%;
+        transform: translateY(-50%);
+        display: block;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
     }
 
     #main_slider a.carousel-control-next {
         position: absolute;
-        left: 236px;
-        top: 90%;
-        display: none;
+        right: 10px;
+        top: 68%;
+        transform: translateY(-50%);
+        display: block;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
     }
 
     .titlepage h2::after {
@@ -924,5 +938,48 @@
 
     .menu_text {
         padding-top: 0px;
+    }
+    
+    /* Mobile carousel controls styling - matching desktop format */
+    #main_slider a.carousel-control-prev,
+    #main_slider a.carousel-control-next {
+        background: #367d99;
+        opacity: 1;
+        font-size: 30px;
+        color: #ffffff;
+        border-radius: 100%;
+        top: 68%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #main_slider a.carousel-control-prev {
+        left: -13px;
+    }
+    
+    #main_slider a.carousel-control-next {
+        right: -13px;
+    }
+    
+    #main_slider a.carousel-control-prev:hover,
+    #main_slider a.carousel-control-next:hover,
+    #main_slider a.carousel-control-prev:focus,
+    #main_slider a.carousel-control-next:focus {
+        background: #367d99;
+        color: #fff;
+    }
+    
+    /* Hide second item on mobile to show only one service at a time */
+    #main_slider .carousel-item .col-md-6:nth-child(2) {
+        display: none;
+    }
+    
+    /* Make first item take full width on mobile */
+    #main_slider .carousel-item .col-md-6:first-child {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
     }
 }
