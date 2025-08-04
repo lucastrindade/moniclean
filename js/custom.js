@@ -389,4 +389,81 @@ $(function () {
      });
 
 
+	 function initTwenty($container) {
+		if (!$container.length || $container.data('tt-initialized')) return;
+		$container.twentytwenty({
+		  default_offset_pct: 0.5,
+		  orientation: 'horizontal',
+		  before_label: 'Before',
+		  after_label: 'After',
+		  no_overlay: true,
+		  move_slider_on_hover: false,
+		  move_with_handle_only: true,
+		  click_to_move: true
+		});
+		$container.data('tt-initialized', true);
+	  }
+	  
+	  // retorna uma promise que resolve quando todas as imgs do container carregarem
+	  function imagesLoadedPromise($container) {
+		const imgs = $container.find('img').toArray();
+		const promises = imgs.map(img => {
+		  return new Promise(resolve => {
+			if (img.complete && img.naturalWidth !== 0) {
+			  resolve();
+			} else {
+			  $(img).one('load error', () => resolve());
+			}
+		  });
+		});
+		return Promise.all(promises);
+	  }
+	  
+	  // prepara um slide (pré-carrega + inicializa) sem mostrar imediatamente
+	  function prepareSlide($carouselItem) {
+		const $wrapper = $carouselItem.find('.twentytwenty-wrapper');
+		const $container = $wrapper.find('.twentytwenty-container');
+	  
+		// se já tá pronto, nada a fazer
+		if ($wrapper.hasClass('ready')) return Promise.resolve();
+	  
+		// pré-carrega imagens e inicializa
+		return imagesLoadedPromise($container).then(() => {
+		  // inicializa TwentyTwenty
+		  initTwenty($container);
+		  // dá um pequeno delay para garantir o plugin ter feito seus cálculos internos
+		  return new Promise(r => setTimeout(r, 10));
+		}).then(() => {
+		  // marca como pronto: fade-in
+		  $wrapper.addClass('ready');
+		});
+	  }
+	  
+	  $(document).ready(function() {
+		// embrulha cada container pra controlar visibilidade
+		$('.twentytwenty-container').each(function() {
+		  const $orig = $(this);
+		  // se já tiver wrapper, pula
+		  if ($orig.parent().hasClass('twentytwenty-wrapper')) return;
+		  $orig.wrap('<div class="twentytwenty-wrapper"></div>');
+		});
+	  
+		// inicializa o slide ativo imediato (desktop e mobile)
+		$('#gallery_slider_desktop .carousel-item.active, #gallery_slider_mobile .carousel-item.active').each(function() {
+		  prepareSlide($(this));
+		});
+	  
+		// antes da transição, prepara (pré-carrega) o próximo slide
+		$('#gallery_slider_desktop, #gallery_slider_mobile').on('slide.bs.carousel', function(e) {
+		  const $next = $(e.relatedTarget);
+		  prepareSlide($next);
+		});
+	  
+		// quando a transição terminou, garante que está visível (deveria estar já se preparado)
+		$('#gallery_slider_desktop, #gallery_slider_mobile').on('slid.bs.carousel', function(e) {
+		  const $current = $(e.relatedTarget);
+		  // caso não tenha sido preparado por algum motivo, força agora
+		  prepareSlide($current);
+		});
+	  });
 });

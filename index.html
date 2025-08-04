@@ -108,6 +108,8 @@
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
     media="screen">
+  <!-- TwentyTwenty CSS -->
+  <link rel="stylesheet" href="css/twentytwenty.css" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -340,8 +342,102 @@
   </div>
   <!-- services section start -->
   
-  <!-- TWENTY TWENTY + CAROUSEL -->
-  
+  <!-- Gallery section start -->
+  <div class="services_section layout_padding">
+    <div class="container">
+      <h1 class="services_taital"><span>Work </span> <img src="images/icon-1.png" alt="Gallery Icon"> <span style="color: #1f1f1f">Gallery</span></h1>
+      <p class="services_text">See the amazing transformations we achieve with our professional cleaning services</p>
+      
+      <!-- Desktop Gallery Carousel (2 items per slide) - Hidden on mobile -->
+      <div id="gallery_slider_desktop" class="carousel slide d-none d-md-block" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="services_section_2">
+              <div class="row">
+                <!-- Before/After Comparison 1 -->
+                <div class="col-md-6">
+                  <div class="gallery-item">
+                    <div class="twentytwenty-container">
+                      <img src="images/gallery/before_1.jpeg" alt="Before Cleaning" />
+                      <img src="images/gallery/after_1.jpeg" alt="After Cleaning" />
+                    </div>
+                    <h4 class="gallery-title">Living Room Deep Clean</h4>
+                    <p class="gallery-description">Professional carpet and upholstery cleaning with stain removal</p>
+                  </div>
+                </div>
+                <!-- Before/After Comparison 2 -->
+                <div class="col-md-6">
+                  <div class="gallery-item">
+                    <div class="twentytwenty-container">
+                      <img src="images/gallery/before_2.jpeg" alt="Before Cleaning" />
+                      <img src="images/gallery/after_2.jpeg" alt="After Cleaning" />
+                    </div>
+                    <h4 class="gallery-title">Kitchen & Tile Restoration</h4>
+                    <p class="gallery-description">Complete tile and grout cleaning with sanitization</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#gallery_slider_desktop" role="button" data-slide="prev">
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#gallery_slider_desktop" role="button" data-slide="next">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Gallery Carousel (1 item per slide) - Hidden on desktop -->
+      <div id="gallery_slider_mobile" class="carousel slide d-md-none" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#gallery_slider_mobile" data-slide-to="0" class="active"></li>
+          <li data-target="#gallery_slider_mobile" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="services_section_2 layout_padding">
+              <div class="row">
+                <div class="col-12">
+                  <div class="gallery-item">
+                    <div class="twentytwenty-container">
+                      <img src="images/gallery/before_1.jpeg" alt="Before Cleaning" />
+                      <img src="images/gallery/after_1.jpeg" alt="After Cleaning" />
+                    </div>
+                    <h4 class="gallery-title">Living Room Deep Clean</h4>
+                    <p class="gallery-description">Professional carpet and upholstery cleaning with stain removal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="services_section_2 layout_padding">
+              <div class="row">
+                <div class="col-12">
+                  <div class="gallery-item">
+                    <div class="twentytwenty-container">
+                      <img src="images/gallery/before_2.jpeg" alt="Before Cleaning" />
+                      <img src="images/gallery/after_2.jpeg" alt="After Cleaning" />
+                    </div>
+                    <h4 class="gallery-title">Kitchen & Tile Restoration</h4>
+                    <p class="gallery-description">Complete tile and grout cleaning with sanitization</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#gallery_slider_mobile" role="button" data-slide="prev">
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#gallery_slider_mobile" role="button" data-slide="next">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Gallery section end -->
   
   <!-- choose section start -->
   <div class="choose_section layout_padding">
@@ -475,6 +571,11 @@
   <!-- javascript -->
   <script src="js/owl.carousel.js"></script>
   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  
+  <!-- TwentyTwenty JS Dependencies -->
+  <script src="js/jquery.event.move.js" type="text/javascript"></script>
+  <script src="js/jquery.twentytwenty.js" type="text/javascript"></script>
+  
   <script>
     $(document).ready(function () {
       $(".fancybox").fancybox({
