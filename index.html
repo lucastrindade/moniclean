@@ -846,6 +846,47 @@
 
         $(this).removeClass('transition');
       });
+
+      // Preload all gallery images to prevent loading delays
+      function preloadGalleryImages() {
+        var imageUrls = [];
+        $(".twentytwenty-container img").each(function() {
+          imageUrls.push($(this).attr('src'));
+        });
+        
+        imageUrls.forEach(function(url) {
+          var img = new Image();
+          img.src = url;
+        });
+      }
+
+      // Initialize TwentyTwenty only for containers that haven't been initialized
+      function initializeTwentyTwenty() {
+        $(".twentytwenty-container").each(function() {
+          // Only initialize if not already initialized
+          if (!$(this).hasClass('twentytwenty-container-initialized')) {
+            $(this).twentytwenty();
+          }
+        });
+      }
+
+      // Preload images first, then initialize
+      preloadGalleryImages();
+      
+      // Small delay to ensure images start loading
+      setTimeout(function() {
+        initializeTwentyTwenty();
+      }, 100);
+
+      // Initialize TwentyTwenty for newly visible slides only
+      $('#gallery_slider_desktop, #gallery_slider_mobile').on('slid.bs.carousel', function () {
+        // Only initialize containers in the active slide that aren't already initialized
+        $(this).find('.carousel-item.active .twentytwenty-container').each(function() {
+          if (!$(this).hasClass('twentytwenty-container-initialized')) {
+            $(this).twentytwenty();
+          }
+        });
+      });
     });
   </script>
   <script>
