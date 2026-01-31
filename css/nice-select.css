@@ -111,9 +111,10 @@
 }
 
 .nice-select .list {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 0 1px rgba(68, 68, 68, 0.11);
+  background-color: #282828;
+  border-radius: 8px;
+  border: 2px solid #4a4a4a;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   margin-top: 4px;
   opacity: 0;
@@ -150,16 +151,21 @@
   text-align: left;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+  background-color: #282828;
+  color: #ffffff;
 }
 
 .nice-select .option:hover,
 .nice-select .option.focus,
 .nice-select .option.selected.focus {
-  background-color: #f6f6f6;
+  background-color: #367d99;
+  color: #ffffff;
 }
 
 .nice-select .option.selected {
   font-weight: bold;
+  background-color: #3a3a3a;
+  color: #89cbeb;
 }
 
 .nice-select .option.disabled {

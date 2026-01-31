@@ -1048,4 +1048,119 @@
     #gallery_slider_mobile a.carousel-control-next {
         right: -20px;
     }
+
+    /* Contact Form Mobile Styles */
+    .contact_form_section {
+        padding: 20px 15px;
+    }
+
+    .form_group_half {
+        width: 100%;
+    }
+
+    .form_row {
+        margin: 0 -5px;
+        margin-bottom: 10px;
+    }
+
+    .form_group {
+        padding: 0 5px;
+        margin-bottom: 10px;
+    }
+
+    .form_label {
+        font-size: 13px;
+    }
+
+    .form_input,
+    .form_select,
+    .form_textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .section_title {
+        font-size: 16px;
+    }
+
+    .conditional_section {
+        padding: 15px;
+    }
+
+    .qty_btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .qty_input {
+        font-size: 16px;
+    }
+
+    .field_hint {
+        font-size: 11px;
+    }
+
+    .submit_btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .checkbox_label {
+        padding: 10px 12px;
+    }
+
+    .checkbox_custom {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .checkbox_text {
+        font-size: 14px;
+    }
+
+    .footer_section .social_icon {
+        text-align: center;
+    }
+
+    .footer_section .map_main {
+        margin-top: 30px;
+    }
+}
+
+/* Contact Form Tablet Styles */
+@media (min-width: 576px) and (max-width: 991px) {
+    .contact_form_section {
+        padding: 25px 20px;
+    }
+
+    .form_group_half {
+        width: 50%;
+    }
+
+    .footer_section .social_icon {
+        text-align: center;
+    }
+
+    .footer_section .map_main {
+        margin-top: 30px;
+    }
+}
+
+/* Contact Form Desktop/Tablet Adjustments */
+@media (min-width: 992px) {
+    .contact_form_section {
+        margin-right: 20px;
+    }
+
+    .footer_section .col-lg-5 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .footer_section .map_main {
+        flex-grow: 1;
+    }
 }

@@ -110,6 +110,38 @@
     media="screen">
   <!-- TwentyTwenty CSS -->
   <link rel="stylesheet" href="css/twentytwenty.css" type="text/css" media="screen" />
+  
+  <!-- Contact Form Dropdown Dark Theme Override -->
+  <style>
+    /* Nice-Select Dropdown Dark Theme */
+    .nice-select .list {
+      background-color: #282828 !important;
+      border: 2px solid #4a4a4a !important;
+      border-radius: 8px !important;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    .nice-select .option {
+      background-color: #282828 !important;
+      color: #ffffff !important;
+    }
+    
+    .nice-select .option:hover,
+    .nice-select .option.focus {
+      background-color: #367d99 !important;
+      color: #ffffff !important;
+    }
+    
+    .nice-select .option.selected {
+      background-color: #3a3a3a !important;
+      color: #89cbeb !important;
+    }
+    
+    .nice-select .option.selected:hover {
+      background-color: #367d99 !important;
+      color: #ffffff !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -717,16 +749,165 @@
       </div>
       <div class="contact_section">
         <div class="row">
-          <div class="col-md-6">
-            <div class="mail_section">
-              <input type="" class="email_text" placeholder="Name" name="Name">
-              <input type="" class="email_text" placeholder="Email" name="Email">
-              <input type="" class="email_text" placeholder="Phone Number" name="Phone Number">
-              <textarea class="massage_text" placeholder="Message" rows="5" id="comment" name="Message"></textarea>
-              <div class="send_bt"><a href="#">send</a></div>
+          <div class="col-lg-7 col-md-12">
+            <div class="mail_section contact_form_section">
+              <form id="contactForm" novalidate>
+                <!-- Row 1: Name and Email -->
+                <div class="form_row">
+                  <div class="form_group form_group_half">
+                    <label for="contact_name" class="form_label">Name <span class="required_asterisk">*</span></label>
+                    <input type="text" class="form_input" id="contact_name" name="name" placeholder="Your name" maxlength="100" required>
+                  </div>
+                  <div class="form_group form_group_half">
+                    <label for="contact_email" class="form_label">Email <span class="required_hint">(email or phone required)</span></label>
+                    <input type="email" class="form_input" id="contact_email" name="email" placeholder="your@email.com" maxlength="60">
+                  </div>
+                </div>
+
+                <!-- Row 2: Phone and Suburb -->
+                <div class="form_row">
+                  <div class="form_group form_group_half">
+                    <label for="contact_phone" class="form_label">Phone <span class="required_hint">(email or phone required)</span></label>
+                    <input type="tel" class="form_input" id="contact_phone" name="phone" placeholder="0412 345 678" maxlength="12">
+                  </div>
+                  <div class="form_group form_group_half">
+                    <label for="contact_suburb" class="form_label">Suburb <span class="required_asterisk">*</span></label>
+                    <input type="text" class="form_input" id="contact_suburb" name="suburb" placeholder="Your suburb" maxlength="100" required>
+                  </div>
+                </div>
+
+                <!-- Row 3: Service Type -->
+                <div class="form_row">
+                  <div class="form_group form_group_full">
+                    <label for="contact_service" class="form_label">Service <span class="required_asterisk">*</span></label>
+                    <select class="form_select" id="contact_service" name="service" required>
+                      <option value="">Select a service...</option>
+                      <option value="home_cleaning">Home Cleaning</option>
+                      <option value="end_of_lease">End of Lease Cleaning</option>
+                      <option value="commercial">Commercial Cleaning</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Home Cleaning Section (Conditional) -->
+                <div id="home_cleaning_section" class="conditional_section" style="display: none;">
+                  <h4 class="section_title">House Characteristics <span class="required_asterisk">*</span></h4>
+                  <div class="form_row">
+                    <div class="form_group form_group_half">
+                      <label for="contact_bedrooms" class="form_label">Bedrooms to be cleaned</label>
+                      <div class="quantity_selector">
+                        <button type="button" class="qty_btn qty_minus" data-target="contact_bedrooms">-</button>
+                        <input type="number" class="qty_input" id="contact_bedrooms" name="bedrooms" value="1" min="1" max="20" readonly>
+                        <button type="button" class="qty_btn qty_plus" data-target="contact_bedrooms">+</button>
+                      </div>
+                    </div>
+                    <div class="form_group form_group_half">
+                      <label for="contact_bathrooms" class="form_label">Bathrooms to be cleaned</label>
+                      <div class="quantity_selector">
+                        <button type="button" class="qty_btn qty_minus_half" data-target="contact_bathrooms">-</button>
+                        <input type="number" class="qty_input" id="contact_bathrooms" name="bathrooms" value="1" min="1" max="20" step="0.5" readonly>
+                        <button type="button" class="qty_btn qty_plus_half" data-target="contact_bathrooms">+</button>
+                      </div>
+                      <small class="field_hint">Bathrooms with only a toilet and a sink should be counted as half</small>
+                    </div>
+                  </div>
+                  <div class="form_row">
+                    <div class="form_group form_group_half">
+                      <label for="contact_other_rooms" class="form_label">Other living areas to be cleaned</label>
+                      <div class="quantity_selector">
+                        <button type="button" class="qty_btn qty_minus" data-target="contact_other_rooms">-</button>
+                        <input type="number" class="qty_input" id="contact_other_rooms" name="other_rooms" value="0" min="0" max="20" readonly>
+                        <button type="button" class="qty_btn qty_plus" data-target="contact_other_rooms">+</button>
+                      </div>
+                      <small class="field_hint">e.g. lounge, dining, office, laundry, garage</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- End of Lease Section (Conditional) -->
+                <div id="end_of_lease_section" class="conditional_section" style="display: none;">
+                  <h4 class="section_title">End of Lease Details</h4>
+                  <div class="form_row">
+                    <div class="form_group form_group_full">
+                      <label for="contact_last_cleaning" class="form_label">When was the last professional cleaning?</label>
+                      <input type="date" class="form_input" id="contact_last_cleaning" name="last_cleaning">
+                    </div>
+                  </div>
+                  <div class="form_row">
+                    <div class="form_group form_group_half">
+                      <label class="checkbox_label">
+                        <input type="checkbox" class="form_checkbox" id="contact_oven_cleaning" name="oven_cleaning" value="yes">
+                        <span class="checkbox_custom"></span>
+                        <span class="checkbox_text">Oven needs to be cleaned</span>
+                      </label>
+                    </div>
+                    <div class="form_group form_group_half">
+                      <label class="checkbox_label">
+                        <input type="checkbox" class="form_checkbox" id="contact_carpet_cleaning" name="carpet_cleaning" value="yes">
+                        <span class="checkbox_custom"></span>
+                        <span class="checkbox_text">Carpet needs to be cleaned</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Row 4: Frequency -->
+                <div class="form_row">
+                  <div class="form_group form_group_full">
+                    <label for="contact_frequency" class="form_label">Frequency</label>
+                    <select class="form_select" id="contact_frequency" name="frequency">
+                      <option value="">Select frequency...</option>
+                      <option value="once">Once</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="fortnightly">Fortnightly</option>
+                      <option value="monthly">Monthly</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Row 5: Contact Preference -->
+                <div class="form_row">
+                  <div class="form_group form_group_full">
+                    <label for="contact_preference" class="form_label">How do you want to be contacted? <span class="required_asterisk">*</span></label>
+                    <select class="form_select" id="contact_preference" name="contact_preference">
+                      <option value="">Select preference...</option>
+                      <option value="call">Call</option>
+                      <option value="text">Text Message</option>
+                      <option value="email">Email</option>
+                      <option value="whatsapp">WhatsApp</option>
+                      <option value="other">Other (specify)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Other Contact Preference (Conditional) -->
+                <div id="other_contact_section" class="conditional_section" style="display: none;">
+                  <div class="form_row">
+                    <div class="form_group form_group_full">
+                      <label for="contact_other_preference" class="form_label">Please specify <span class="required_asterisk">*</span></label>
+                      <input type="text" class="form_input" id="contact_other_preference" name="other_preference" placeholder="How would you like to be contacted?" maxlength="255">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Row 6: Additional Information -->
+                <div class="form_row">
+                  <div class="form_group form_group_full">
+                    <label for="contact_message" class="form_label">Any relevant information</label>
+                    <textarea class="form_textarea" id="contact_message" name="message" placeholder="Tell us more about your cleaning needs..." rows="4"></textarea>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form_row">
+                  <div class="form_group form_group_full">
+                    <button type="submit" class="submit_btn">Get a Quote</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-lg-5 col-md-12">
             <div class="map_main">
               <div class="map-responsive">
                 <iframe
@@ -830,6 +1011,308 @@
     function closeNav() {
       document.getElementById("myNav").style.width = "0%";
     }
+  </script>
+
+  <!-- Contact Form JavaScript -->
+  <script>
+    $(document).ready(function() {
+      // Service type conditional sections
+      $('#contact_service').on('change', function() {
+        var selectedService = $(this).val();
+        
+        // Hide all conditional sections first
+        $('#home_cleaning_section').slideUp(300);
+        $('#end_of_lease_section').slideUp(300);
+        
+        // Show relevant section based on selection
+        if (selectedService === 'home_cleaning') {
+          $('#home_cleaning_section').slideDown(300);
+        } else if (selectedService === 'end_of_lease') {
+          $('#end_of_lease_section').slideDown(300);
+        }
+      });
+
+      // Contact preference conditional section
+      $('#contact_preference').on('change', function() {
+        var selectedPreference = $(this).val();
+        
+        if (selectedPreference === 'other') {
+          $('#other_contact_section').slideDown(300);
+          $('#contact_other_preference').prop('required', true);
+        } else {
+          $('#other_contact_section').slideUp(300);
+          $('#contact_other_preference').prop('required', false);
+        }
+      });
+
+      // Quantity selector for bedrooms (increment by 1)
+      $('.qty_plus').on('click', function() {
+        var targetId = $(this).data('target');
+        var input = $('#' + targetId);
+        var currentVal = parseInt(input.val());
+        var maxVal = parseInt(input.attr('max'));
+        
+        if (currentVal < maxVal) {
+          input.val(currentVal + 1);
+        }
+      });
+
+      $('.qty_minus').on('click', function() {
+        var targetId = $(this).data('target');
+        var input = $('#' + targetId);
+        var currentVal = parseInt(input.val());
+        var minVal = parseInt(input.attr('min'));
+        
+        if (currentVal > minVal) {
+          input.val(currentVal - 1);
+        }
+      });
+
+      // Quantity selector for bathrooms (increment by 0.5)
+      $('.qty_plus_half').on('click', function() {
+        var targetId = $(this).data('target');
+        var input = $('#' + targetId);
+        var currentVal = parseFloat(input.val());
+        var maxVal = parseFloat(input.attr('max'));
+        
+        if (currentVal < maxVal) {
+          input.val((currentVal + 0.5).toFixed(1));
+        }
+      });
+
+      $('.qty_minus_half').on('click', function() {
+        var targetId = $(this).data('target');
+        var input = $('#' + targetId);
+        var currentVal = parseFloat(input.val());
+        var minVal = parseFloat(input.attr('min'));
+        
+        if (currentVal > minVal) {
+          input.val((currentVal - 0.5).toFixed(1));
+        }
+      });
+
+      // Australian phone number mask (#### ### ###)
+      $('#contact_phone').on('input', function() {
+        var value = $(this).val().replace(/\D/g, ''); // Remove non-digits
+        var formattedValue = '';
+        
+        if (value.length > 0) {
+          formattedValue = value.substring(0, 4);
+        }
+        if (value.length > 4) {
+          formattedValue += ' ' + value.substring(4, 7);
+        }
+        if (value.length > 7) {
+          formattedValue += ' ' + value.substring(7, 10);
+        }
+        
+        $(this).val(formattedValue);
+      });
+
+      // Form submission handling
+      $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        var isValid = true;
+        var firstInvalid = null;
+        var errorMessages = [];
+        
+        // Helper function to mark field as invalid
+        function markInvalid(element, message) {
+          isValid = false;
+          $(element).addClass('input_error');
+          if (!firstInvalid) firstInvalid = $(element);
+          if (message) errorMessages.push(message);
+        }
+        
+        // Helper function to mark field as valid
+        function markValid(element) {
+          $(element).removeClass('input_error');
+        }
+        
+        // 1. Name is required
+        var name = $('#contact_name').val().trim();
+        if (!name) {
+          markInvalid('#contact_name', 'Name is required');
+        } else {
+          markValid('#contact_name');
+        }
+        
+        // 2. Email OR Phone is required (at least one)
+        var email = $('#contact_email').val().trim();
+        var phone = $('#contact_phone').val().trim();
+        
+        if (!email && !phone) {
+          markInvalid('#contact_email', 'Please provide either an email or phone number');
+          markInvalid('#contact_phone');
+        } else {
+          markValid('#contact_email');
+          markValid('#contact_phone');
+          
+          // Validate email format if provided
+          if (email && !isValidEmail(email)) {
+            markInvalid('#contact_email', 'Please enter a valid email address');
+          }
+        }
+        
+        // 3. Suburb is required
+        var suburb = $('#contact_suburb').val().trim();
+        if (!suburb) {
+          markInvalid('#contact_suburb', 'Suburb is required');
+        } else {
+          markValid('#contact_suburb');
+        }
+        
+        // 4. Service is required
+        var service = $('#contact_service').val();
+        if (!service) {
+          markInvalid('#contact_service', 'Please select a service');
+          // Also highlight the nice-select wrapper
+          $('#contact_service').closest('.form_group').find('.nice-select').addClass('input_error');
+        } else {
+          markValid('#contact_service');
+          $('#contact_service').closest('.form_group').find('.nice-select').removeClass('input_error');
+        }
+        
+        // 5. House characteristics required when Home Cleaning is selected
+        if (service === 'home_cleaning') {
+          var bedrooms = parseInt($('#contact_bedrooms').val());
+          var bathrooms = parseFloat($('#contact_bathrooms').val());
+          
+          if (isNaN(bedrooms) || bedrooms < 1) {
+            markInvalid('#contact_bedrooms', 'Please specify number of bedrooms');
+          } else {
+            markValid('#contact_bedrooms');
+          }
+          
+          if (isNaN(bathrooms) || bathrooms < 0.5) {
+            markInvalid('#contact_bathrooms', 'Please specify number of bathrooms');
+          } else {
+            markValid('#contact_bathrooms');
+          }
+        }
+        
+        // 6. Contact preference is required
+        var contactPreference = $('#contact_preference').val();
+        if (!contactPreference) {
+          markInvalid('#contact_preference', 'Please select how you want to be contacted');
+          $('#contact_preference').closest('.form_group').find('.nice-select').addClass('input_error');
+        } else {
+          markValid('#contact_preference');
+          $('#contact_preference').closest('.form_group').find('.nice-select').removeClass('input_error');
+          
+          // Check "Other" contact preference if selected
+          if (contactPreference === 'other' && !$('#contact_other_preference').val().trim()) {
+            markInvalid('#contact_other_preference', 'Please specify your preferred contact method');
+          }
+        }
+        
+        if (!isValid) {
+          // Show error message
+          if (errorMessages.length > 0) {
+            alert('Please fix the following:\n\n• ' + errorMessages.join('\n• '));
+          }
+          if (firstInvalid) {
+            // Scroll to first invalid field
+            $('html, body').animate({
+              scrollTop: $(firstInvalid).offset().top - 100
+            }, 300);
+            $(firstInvalid).focus();
+          }
+          return false;
+        }
+        
+        // If valid, you can submit the form here
+        // For now, show a success message
+        alert('Thank you for your enquiry! We will get back to you soon with a quote.');
+        this.reset();
+        
+        // Reset nice-select displays
+        $('.nice-select .current').text($('.nice-select .option:first-child').text());
+        
+        // Reset conditional sections
+        $('#home_cleaning_section').slideUp(300);
+        $('#end_of_lease_section').slideUp(300);
+        $('#other_contact_section').slideUp(300);
+        
+        // Reset quantity selectors
+        $('#contact_bedrooms').val(1);
+        $('#contact_bathrooms').val(1);
+        $('#contact_other_rooms').val(0);
+      });
+      
+      // Remove error styling on input
+      $('.form_input, .form_select, .form_textarea').on('input change', function() {
+        $(this).removeClass('input_error');
+        // Also remove from associated nice-select if exists
+        $(this).closest('.form_group').find('.nice-select').removeClass('input_error');
+      });
+      
+      // Remove error styling when nice-select is clicked
+      $(document).on('click', '.nice-select', function() {
+        $(this).removeClass('input_error');
+      });
+      
+      // Email validation helper
+      function isValidEmail(email) {
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+      }
+
+      // Apply dark theme to nice-select dropdowns
+      function applyNiceSelectDarkTheme() {
+        // Style the dropdown lists
+        $('.nice-select .list').css({
+          'background-color': '#282828',
+          'border': '2px solid #4a4a4a',
+          'border-radius': '8px',
+          'box-shadow': '0 5px 20px rgba(0, 0, 0, 0.4)'
+        });
+        
+        // Style all options
+        $('.nice-select .option').css({
+          'background-color': '#282828',
+          'color': '#ffffff'
+        });
+        
+        // Add hover effect via event handlers
+        $('.nice-select .option').hover(
+          function() {
+            $(this).css({
+              'background-color': '#367d99',
+              'color': '#ffffff'
+            });
+          },
+          function() {
+            if ($(this).hasClass('selected')) {
+              $(this).css({
+                'background-color': '#3a3a3a',
+                'color': '#89cbeb'
+              });
+            } else {
+              $(this).css({
+                'background-color': '#282828',
+                'color': '#ffffff'
+              });
+            }
+          }
+        );
+        
+        // Style selected options
+        $('.nice-select .option.selected').css({
+          'background-color': '#3a3a3a',
+          'color': '#89cbeb'
+        });
+      }
+      
+      // Apply theme on page load
+      applyNiceSelectDarkTheme();
+      
+      // Re-apply theme when nice-select is opened (in case of dynamic changes)
+      $(document).on('click', '.nice-select', function() {
+        setTimeout(applyNiceSelectDarkTheme, 10);
+      });
+    });
   </script>
 </body>
 

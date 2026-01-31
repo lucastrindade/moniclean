@@ -1020,6 +1020,386 @@ textarea#comment::placeholder {
     float: left;
 }
 
+/* ============================================
+   Contact Form Styles
+   ============================================ */
+
+.contact_form_section {
+    width: 100%;
+    padding: 30px;
+    background-color: #363636;
+    border-radius: 10px;
+}
+
+.form_row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    margin-bottom: 20px;
+}
+
+.form_group {
+    padding: 0 10px;
+    margin-bottom: 15px;
+}
+
+.form_group_full {
+    width: 100%;
+}
+
+.form_group_half {
+    width: 50%;
+}
+
+.form_label {
+    display: block;
+    color: #89cbeb;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.required_asterisk {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.required_hint {
+    color: #89cbeb;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.form_input,
+.form_select,
+.form_textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #282828;
+    border: 2px solid #4a4a4a;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form_input:focus,
+.form_select:focus,
+.form_textarea:focus {
+    border-color: #89cbeb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(137, 203, 235, 0.2);
+}
+
+.form_input::placeholder,
+.form_textarea::placeholder {
+    color: #717471;
+}
+
+.form_select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2389cbeb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+/* Hide the background arrow when nice-select is used (nice-select uses :after for arrow) */
+.nice-select.form_select {
+    background-image: none !important;
+}
+
+.form_select option {
+    background-color: #282828 !important;
+    color: #ffffff !important;
+    padding: 10px !important;
+}
+
+/* Force dark styling on all select dropdowns in contact form */
+.contact_form_section select,
+.contact_form_section select option,
+.footer_section select,
+.footer_section select option {
+    background-color: #282828 !important;
+    color: #ffffff !important;
+}
+
+/* Nice-Select Dropdown Override for Dark Theme */
+.contact_form_section .nice-select {
+    background-color: #282828 !important;
+    border: 2px solid #4a4a4a !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    width: 100% !important;
+    float: none !important;
+    line-height: 24px !important;
+    padding: 12px 40px 12px 15px !important;
+    height: auto !important;
+}
+
+.contact_form_section .nice-select:after {
+    border-color: #89cbeb !important;
+    right: 15px !important;
+}
+
+.contact_form_section .nice-select:hover,
+.contact_form_section .nice-select:focus,
+.contact_form_section .nice-select.open {
+    border-color: #89cbeb !important;
+}
+
+.contact_form_section .nice-select .list,
+.contact_form_section .nice-select .nice-select-dropdown,
+.contact_form_section .nice-select ul.list {
+    background-color: #282828 !important;
+    border: 2px solid #4a4a4a !important;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
+    margin-top: 5px !important;
+    width: 100% !important;
+    max-height: 250px !important;
+    overflow-y: auto !important;
+}
+
+.contact_form_section .nice-select .option,
+.contact_form_section .nice-select .list li,
+.contact_form_section .nice-select ul.list li {
+    background-color: #282828 !important;
+    color: #ffffff !important;
+    padding: 10px 15px !important;
+    line-height: 24px !important;
+    min-height: auto !important;
+}
+
+.contact_form_section .nice-select .option:hover,
+.contact_form_section .nice-select .option.focus,
+.contact_form_section .nice-select .list li:hover,
+.contact_form_section .nice-select ul.list li:hover {
+    background-color: #367d99 !important;
+    color: #ffffff !important;
+}
+
+.contact_form_section .nice-select .option.selected,
+.contact_form_section .nice-select .list li.selected,
+.contact_form_section .nice-select ul.list li.selected {
+    background-color: #3a3a3a !important;
+    color: #89cbeb !important;
+    font-weight: 600 !important;
+}
+
+.contact_form_section .nice-select .option.selected:hover,
+.contact_form_section .nice-select .list li.selected:hover,
+.contact_form_section .nice-select ul.list li.selected:hover {
+    background-color: #367d99 !important;
+    color: #ffffff !important;
+}
+
+/* Placeholder styling for nice-select */
+.contact_form_section .nice-select .current {
+    color: #717471 !important;
+}
+
+.contact_form_section .nice-select.has-value .current {
+    color: #ffffff !important;
+}
+
+.form_textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Input error styling */
+.input_error {
+    border-color: #ff6b6b !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2) !important;
+}
+
+/* Conditional sections */
+.conditional_section {
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #89cbeb;
+}
+
+.section_title {
+    color: #89cbeb;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #4a4a4a;
+}
+
+/* Quantity selector */
+.quantity_selector {
+    display: flex;
+    align-items: center;
+    background-color: #282828;
+    border: 2px solid #4a4a4a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.qty_btn {
+    width: 45px;
+    height: 45px;
+    background-color: #367d99;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty_btn:hover {
+    background-color: #89cbeb;
+}
+
+.qty_btn:active {
+    background-color: #2c6a82;
+}
+
+.qty_input {
+    flex: 1;
+    text-align: center;
+    border: none !important;
+    background-color: transparent !important;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.qty_input:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+/* Field hint text */
+.field_hint {
+    display: block;
+    color: #999999;
+    font-size: 12px;
+    margin-top: 8px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Custom Checkbox Styling */
+.checkbox_label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px 15px;
+    background-color: #282828;
+    border: 2px solid #4a4a4a;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.checkbox_label:hover {
+    border-color: #89cbeb;
+}
+
+.form_checkbox {
+    display: none;
+}
+
+.checkbox_custom {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #4a4a4a;
+    border-radius: 4px;
+    margin-right: 12px;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    background-color: transparent;
+}
+
+.form_checkbox:checked + .checkbox_custom {
+    background-color: #89cbeb;
+    border-color: #89cbeb;
+}
+
+.form_checkbox:checked + .checkbox_custom::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #282828;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox_text {
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* Submit button */
+.submit_btn {
+    width: 100%;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #282828;
+    background-color: #89cbeb;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.submit_btn:hover {
+    background-color: #367d99;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(137, 203, 235, 0.4);
+}
+
+.submit_btn:active {
+    transform: translateY(0);
+}
+
+/* Date input styling */
+input[type="date"].form_input {
+    position: relative;
+}
+
+input[type="date"].form_input::-webkit-calendar-picker-indicator {
+    filter: invert(70%) sepia(50%) saturate(500%) hue-rotate(160deg);
+    cursor: pointer;
+}
+
+/* Map section adjustments for new layout */
+.footer_section .map_main {
+    margin-top: 0;
+}
+
+.footer_section .social_icon {
+    text-align: center;
+    padding-top: 20px;
+}
+
 /* Gallery Section Styles */
 .gallery-item {
     width: 100%;
