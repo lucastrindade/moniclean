@@ -1315,6 +1315,9 @@
 
       // Apply dark theme to nice-select dropdowns
       function applyNiceSelectDarkTheme() {
+        // Prevent nice-select list from receiving tab focus
+        $('.nice-select .list').attr('tabindex', '-1');
+        
         // Style the dropdown lists
         $('.nice-select .list').css({
           'background-color': '#282828',
