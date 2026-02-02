@@ -1106,6 +1106,13 @@
         font-size: 16px;
     }
 
+    .submit_btn.loading::after {
+        width: 18px;
+        height: 18px;
+        margin-left: -9px;
+        margin-top: -9px;
+    }
+
     .checkbox_label {
         padding: 10px 12px;
     }

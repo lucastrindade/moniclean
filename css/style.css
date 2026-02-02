@@ -1380,6 +1380,50 @@ textarea#comment::placeholder {
     transform: translateY(0);
 }
 
+/* Submit Button Loading State */
+.submit_btn:disabled {
+    background-color: #5a8fa8;
+    color: #ffffff;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.submit_btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.submit_btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 3px solid rgba(40, 40, 40, 0.3);
+    border-top-color: #282828;
+    border-radius: 50%;
+    animation: buttonSpinner 0.8s linear infinite;
+}
+
+@keyframes buttonSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.submit_btn .btn_text {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
+
+.submit_btn.loading .btn_text {
+    opacity: 0;
+}
+
 /* Success Overlay */
 .contact_form_section {
     position: relative;

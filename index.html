@@ -916,7 +916,9 @@
                 <!-- Submit Button -->
                 <div class="form_row">
                   <div class="form_group form_group_full">
-                    <button type="submit" class="submit_btn">Get a Quote</button>
+                    <button type="submit" class="submit_btn" id="submitBtn">
+                      <span class="btn_text">Get a Quote</span>
+                    </button>
                   </div>
                 </div>
               </form>
@@ -1237,29 +1239,97 @@
           return false;
         }
         
-        // If valid, show the success overlay
-        showSuccessOverlay();
+        // =====================================================
+        // FORMSPARK CONFIGURATION
+        // Replace 'YOUR_FORMSPARK_FORM_ID' with your actual form ID
+        // Get your form ID at: https://formspark.io
+        // =====================================================
+        var FORMSPARK_FORM_ID = 'YOUR_FORMSPARK_FORM_ID';
+        var FORMSPARK_FORM_ID = 'echo';
+        var FORMSPARK_URL = 'https://submit-form.com/' + FORMSPARK_FORM_ID;
         
-        // Reset the form
-        this.reset();
+        // Show loading state
+        var $submitBtn = $('#submitBtn');
+        $submitBtn.prop('disabled', true).addClass('loading');
         
-        // Reset nice-select displays - reset each one individually
-        $('.nice-select').each(function() {
-          var firstOptionText = $(this).find('.option:first-child').text();
-          $(this).find('.current').text(firstOptionText);
-          $(this).find('.option').removeClass('selected');
-          $(this).find('.option:first-child').addClass('selected');
+        // Collect form data
+        var formData = {
+          name: $('#contact_name').val().trim(),
+          email: $('#contact_email').val().trim(),
+          phone: $('#contact_phone').val().trim(),
+          suburb: $('#contact_suburb').val().trim(),
+          service: $('#contact_service option:selected').text(),
+          service_value: $('#contact_service').val(),
+          frequency: $('#contact_frequency option:selected').text() || 'Not specified',
+          contact_preference: $('#contact_preference option:selected').text(),
+          message: $('#contact_message').val().trim()
+        };
+        
+        // Add conditional fields based on service type
+        var serviceType = $('#contact_service').val();
+        
+        if (serviceType === 'home_cleaning') {
+          formData.bedrooms = $('#contact_bedrooms').val();
+          formData.bathrooms = $('#contact_bathrooms').val();
+          formData.other_rooms = $('#contact_other_rooms').val();
+        }
+        
+        if (serviceType === 'end_of_lease') {
+          formData.last_cleaning = $('#contact_last_cleaning').val() || 'Not specified';
+          formData.oven_cleaning = $('#contact_oven_cleaning').is(':checked') ? 'Yes' : 'No';
+          formData.carpet_cleaning = $('#contact_carpet_cleaning').is(':checked') ? 'Yes' : 'No';
+        }
+        
+        // Add "Other" contact preference if specified
+        if ($('#contact_preference').val() === 'other') {
+          formData.other_contact_preference = $('#contact_other_preference').val().trim();
+        }
+        
+        // Store form reference for reset
+        var form = this;
+        
+        // Submit to Formspark via AJAX
+        $.ajax({
+          url: FORMSPARK_URL,
+          method: 'POST',
+          contentType: 'application/json',
+          dataType: 'json',
+          data: JSON.stringify(formData),
+          success: function(response) {
+            // Show success overlay
+            showSuccessOverlay();
+            
+            // Reset the form
+            form.reset();
+            
+            // Reset nice-select displays - reset each one individually
+            $('.nice-select').each(function() {
+              var firstOptionText = $(this).find('.option:first-child').text();
+              $(this).find('.current').text(firstOptionText);
+              $(this).find('.option').removeClass('selected');
+              $(this).find('.option:first-child').addClass('selected');
+            });
+            
+            // Reset conditional sections
+            $('#home_cleaning_section').slideUp(300);
+            $('#end_of_lease_section').slideUp(300);
+            $('#other_contact_section').slideUp(300);
+            
+            // Reset quantity selectors
+            $('#contact_bedrooms').val(1);
+            $('#contact_bathrooms').val(1);
+            $('#contact_other_rooms').val(0);
+          },
+          error: function(xhr, status, error) {
+            // Show error message
+            alert('Sorry, there was an error submitting your request. Please try again or contact us directly.\n\nError: ' + (error || 'Unknown error'));
+            console.error('Form submission error:', status, error);
+          },
+          complete: function() {
+            // Re-enable submit button
+            $submitBtn.prop('disabled', false).removeClass('loading');
+          }
         });
-        
-        // Reset conditional sections
-        $('#home_cleaning_section').slideUp(300);
-        $('#end_of_lease_section').slideUp(300);
-        $('#other_contact_section').slideUp(300);
-        
-        // Reset quantity selectors
-        $('#contact_bedrooms').val(1);
-        $('#contact_bathrooms').val(1);
-        $('#contact_other_rooms').val(0);
       });
       
       // Success overlay functions
