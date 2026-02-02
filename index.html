@@ -751,6 +751,21 @@
         <div class="row">
           <div class="col-lg-7 col-md-12">
             <div class="mail_section contact_form_section">
+              <!-- Success Overlay -->
+              <div id="successOverlay" class="success_overlay">
+                <button type="button" class="success_close" id="closeSuccess">&times;</button>
+                <div class="success_content">
+                  <div class="success_icon">
+                    <svg viewBox="0 0 52 52" class="checkmark">
+                      <circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/>
+                      <path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                  </div>
+                  <h3 class="success_title">Thank You!</h3>
+                  <p class="success_message">Your quote request has been submitted successfully.</p>
+                  <p class="success_submessage">We'll get back to you within 24 hours.</p>
+                </div>
+              </div>
               <form id="contactForm" novalidate>
                 <!-- Row 1: Name and Email -->
                 <div class="form_row">
@@ -1222,13 +1237,19 @@
           return false;
         }
         
-        // If valid, you can submit the form here
-        // For now, show a success message
-        alert('Thank you for your enquiry! We will get back to you soon with a quote.');
+        // If valid, show the success overlay
+        showSuccessOverlay();
+        
+        // Reset the form
         this.reset();
         
-        // Reset nice-select displays
-        $('.nice-select .current').text($('.nice-select .option:first-child').text());
+        // Reset nice-select displays - reset each one individually
+        $('.nice-select').each(function() {
+          var firstOptionText = $(this).find('.option:first-child').text();
+          $(this).find('.current').text(firstOptionText);
+          $(this).find('.option').removeClass('selected');
+          $(this).find('.option:first-child').addClass('selected');
+        });
         
         // Reset conditional sections
         $('#home_cleaning_section').slideUp(300);
@@ -1239,6 +1260,39 @@
         $('#contact_bedrooms').val(1);
         $('#contact_bathrooms').val(1);
         $('#contact_other_rooms').val(0);
+      });
+      
+      // Success overlay functions
+      var successTimeout;
+      
+      function showSuccessOverlay() {
+        var overlay = $('#successOverlay');
+        overlay.removeClass('hiding').addClass('show');
+        
+        // Auto-hide after 8 seconds
+        successTimeout = setTimeout(function() {
+          hideSuccessOverlay();
+        }, 8000);
+      }
+      
+      function hideSuccessOverlay() {
+        var overlay = $('#successOverlay');
+        overlay.addClass('hiding');
+        
+        // Clear the timeout if manually closed
+        if (successTimeout) {
+          clearTimeout(successTimeout);
+        }
+        
+        // Remove the overlay after animation completes
+        setTimeout(function() {
+          overlay.removeClass('show hiding');
+        }, 400);
+      }
+      
+      // Close button click handler
+      $('#closeSuccess').on('click', function() {
+        hideSuccessOverlay();
       });
       
       // Remove error styling on input

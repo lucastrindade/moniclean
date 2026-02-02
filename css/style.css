@@ -1380,6 +1380,146 @@ textarea#comment::placeholder {
     transform: translateY(0);
 }
 
+/* Success Overlay */
+.contact_form_section {
+    position: relative;
+}
+
+.success_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 30, 30, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.4s ease;
+}
+
+.success_overlay.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.success_overlay.hiding {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+.success_content {
+    text-align: center;
+    padding: 40px;
+    position: relative;
+}
+
+.success_close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: #89cbeb;
+    color: #282828;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.success_close:hover {
+    background: #367d99;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.success_icon {
+    margin-bottom: 20px;
+}
+
+/* Animated Checkmark */
+.checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #89cbeb;
+    stroke-miterlimit: 10;
+    margin: 0 auto;
+}
+
+.checkmark_circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #89cbeb;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark_check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.success_title {
+    color: #89cbeb;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.success_message {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.success_submessage {
+    color: #999999;
+    font-size: 14px;
+    font-style: italic;
+}
+
 /* Date input styling */
 input[type="date"].form_input {
     position: relative;
