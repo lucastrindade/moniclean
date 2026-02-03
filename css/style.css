@@ -869,6 +869,85 @@ button {
     float: left;
 }
 
+/* Contact Header Redesign */
+.contact_header {
+    width: 100%;
+    display: block;
+    clear: both;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contact_header .contact_taital {
+    text-align: center;
+    margin-bottom: 25px;
+    width: 100%;
+    float: none;
+}
+
+.contact_info_cards {
+    display: inline-flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact_card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(137, 203, 235, 0.2);
+    border-radius: 12px;
+    padding: 15px 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.contact_card:hover {
+    background: rgba(137, 203, 235, 0.1);
+    border-color: rgba(137, 203, 235, 0.4);
+    transform: translateY(-3px);
+}
+
+.contact_card_icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #89cbeb 0%, #5a9cb8 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact_card_icon img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.contact_card_content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.contact_card_label {
+    font-size: 12px;
+    color: #89cbeb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+}
+
+.contact_card_value {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
 .contact_taital {
     width: 100%;
     float: left;
