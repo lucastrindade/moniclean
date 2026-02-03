@@ -1733,3 +1733,94 @@ input[type="date"].form_input::-webkit-calendar-picker-indicator {
 #gallery_slider_mobile .carousel-indicators .active {
     background-color: #367d99;
 }
+
+/* Site Footer */
+.site_footer {
+    background-color: #1a1a1a;
+    padding: 30px 0;
+    border-top: 1px solid #333;
+    clear: both;
+    width: 100%;
+    float: left;
+}
+
+.site_footer .container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.footer_logo img {
+    max-height: 50px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer_logo img:hover {
+    opacity: 1;
+}
+
+.footer_social ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.footer_social li {
+    display: inline-block;
+}
+
+.footer_social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #282828;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.footer_social a:hover {
+    background-color: #89cbeb;
+    transform: translateY(-3px);
+}
+
+.footer_social img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.footer_social a:hover img {
+    filter: brightness(0) invert(0.2);
+}
+
+.footer_copyright p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+.footer_copyright a {
+    color: #89cbeb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer_copyright a:hover {
+    color: #ffffff;
+}

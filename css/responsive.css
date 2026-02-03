@@ -1171,3 +1171,32 @@
         flex-grow: 1;
     }
 }
+
+/* Site Footer Responsive */
+@media (max-width: 575px) {
+    .site_footer {
+        padding: 25px 0;
+    }
+
+    .footer_content {
+        gap: 15px;
+    }
+
+    .footer_logo img {
+        max-height: 40px;
+    }
+
+    .footer_social a {
+        width: 36px;
+        height: 36px;
+    }
+
+    .footer_social img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .footer_copyright p {
+        font-size: 12px;
+    }
+}
