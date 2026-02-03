@@ -710,6 +710,18 @@
         padding-top: 0px;
     }
 
+    /* CTA Button Mobile */
+    .cta_button {
+        padding: 14px 28px;
+        font-size: 15px;
+        gap: 10px;
+    }
+
+    .cta_icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
     .btn-primary {
         max-width: 126px;
         margin-right: 2px;
