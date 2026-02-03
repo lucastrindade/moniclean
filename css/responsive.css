@@ -1,5 +1,57 @@
 /*--------------------------------------------------------------------- File Name: responsive.css ---------------------------------------------------------------------*/
 
+/* Navigation Responsive Styles */
+@media (max-width: 991px) {
+    .nav_links {
+        display: none;
+    }
+    
+    .mobile_menu_toggle {
+        display: flex;
+    }
+    
+    .mobile_menu {
+        display: block;
+    }
+    
+    .main_nav {
+        padding-right: 15px;
+    }
+    
+    /* Hide sticky nav on mobile/tablet */
+    .sticky_nav {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .logo {
+        padding-left: 15px;
+    }
+    
+    .logo img {
+        max-height: 45px;
+    }
+    
+    .mobile_menu {
+        min-width: 180px;
+    }
+    
+    .mobile_nav_link {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 575px) {
+    .logo img {
+        max-height: 40px;
+    }
+    
+    .main_nav {
+        height: 50px;
+    }
+}
 
 /*------------------------------------------------------------------- 991px x 768px ---------------------------------------------------------------------*/
 

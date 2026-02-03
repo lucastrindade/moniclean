@@ -145,38 +145,48 @@
 </head>
 
 <body>
+  <!-- Sticky Navigation (Desktop Only) -->
+  <div class="sticky_nav" id="stickyNav">
+    <div class="container-fluid">
+      <div class="sticky_content">
+        <a href="index.html" class="sticky_logo">
+          <img src="images/logo.png" alt="Moniclean Logo">
+        </a>
+        <ul class="sticky_nav_links">
+          <li><a href="#services" class="sticky_link">Our Services</a></li>
+          <li><a href="#gallery" class="sticky_link">Work Gallery</a></li>
+          <li><a href="#contact" class="sticky_link sticky_cta">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!--header section start -->
   <div class="header_section">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-3">
+      <div class="row align-items-center">
+        <div class="col-6 col-md-3">
           <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Moniclean Professional Cleaning Services Logo"></a></div>
         </div>
-        <div class="col-md-9">
-          <div class="menu_text">
-            <ul>
-              <!-- <div class="togle_3">
-                <div class="menu_main">
-                  <div class="padding_left0"><a href="#">Register</a>
-                    <span class="padding_left0"><a href="#">Login</a></span>
-                  </div>
-                </div>
-                <div class="shoping_bag"><img src="images/search-icon.png" alt="Search"></div>
-              </div> -->
-              <div id="myNav" class="overlay">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <div class="overlay-content">
-                  <a href="index.html">Home</a>
-                  <a href="services.html">Services</a>
-                  <a href="about.html">About</a>
-                  <a href="choose.html">Choose</a>
-                  <a href="team.html">Team</a>
-                  <a href="contact.html">Contact Us</a>
-                </div>
-              </div>
-              <span class="navbar-toggler-icon"></span>
-              <span onclick="openNav()"><img src="images/toggle-icon.png" class="toggle_menu" alt="Menu Toggle"></span>
+        <div class="col-6 col-md-9">
+          <nav class="main_nav">
+            <ul class="nav_links">
+              <li><a href="#services" class="nav_link">Our Services</a></li>
+              <li><a href="#gallery" class="nav_link">Work Gallery</a></li>
+              <li><a href="#contact" class="nav_link nav_cta">Get a Quote</a></li>
             </ul>
+            <!-- Mobile menu toggle -->
+            <button class="mobile_menu_toggle" onclick="toggleMobileMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </nav>
+          <!-- Mobile menu -->
+          <div class="mobile_menu" id="mobileMenu">
+            <a href="#services" class="mobile_nav_link" onclick="closeMobileMenu()">Our Services</a>
+            <a href="#gallery" class="mobile_nav_link" onclick="closeMobileMenu()">Work Gallery</a>
+            <a href="#contact" class="mobile_nav_link mobile_nav_cta" onclick="closeMobileMenu()">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -217,7 +227,7 @@
   </div>
   <!-- header section end -->
   <!-- services section start -->
-  <div class="services_section layout_padding">
+  <div id="services" class="services_section layout_padding">
     <div class="container">
       <h1 class="services_taital"><span>Our</span> <img src="images/icon-1.png" alt="Services Icon"> <span
           style="color: #1f1f1f">Services</span></h1>
@@ -384,7 +394,7 @@
   <!-- services section start -->
   
   <!-- Gallery section start -->
-  <div class="services_section layout_padding">
+  <div id="gallery" class="services_section layout_padding">
     <div class="container">
       <h1 class="services_taital"><span>Work </span> <img src="images/icon-1.png" alt="Gallery Icon"> <span style="color: #1f1f1f">Gallery</span></h1>
       <p class="services_text">See the amazing transformations we achieve with our professional cleaning services</p>
@@ -1054,12 +1064,76 @@
     });
   </script>
   <script>
-    function openNav() {
-      document.getElementById("myNav").style.width = "100%";
+    // Mobile menu toggle functions
+    function toggleMobileMenu() {
+      var menu = document.getElementById('mobileMenu');
+      var toggle = document.querySelector('.mobile_menu_toggle');
+      menu.classList.toggle('active');
+      toggle.classList.toggle('active');
     }
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
+    
+    function closeMobileMenu() {
+      var menu = document.getElementById('mobileMenu');
+      var toggle = document.querySelector('.mobile_menu_toggle');
+      menu.classList.remove('active');
+      toggle.classList.remove('active');
     }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      var menu = document.getElementById('mobileMenu');
+      var toggle = document.querySelector('.mobile_menu_toggle');
+      if (menu && !menu.contains(e.target) && !toggle.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const headerHeight = 80;
+            const targetPosition = target.offsetTop - headerHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+    
+    // Sticky Navigation (Desktop Only)
+    (function() {
+      var stickyNav = document.getElementById('stickyNav');
+      var scrollThreshold = 400; // Show sticky nav after scrolling 400px
+      var lastScrollTop = 0;
+      
+      function handleScroll() {
+        // Only apply on desktop (>991px)
+        if (window.innerWidth <= 991) {
+          stickyNav.classList.remove('visible');
+          return;
+        }
+        
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > scrollThreshold) {
+          stickyNav.classList.add('visible');
+        } else {
+          stickyNav.classList.remove('visible');
+        }
+        
+        lastScrollTop = scrollTop;
+      }
+      
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+    })();
   </script>
 
   <!-- Contact Form JavaScript -->
