@@ -110,6 +110,8 @@
     media="screen">
   <!-- TwentyTwenty CSS -->
   <link rel="stylesheet" href="css/twentytwenty.css" type="text/css" media="screen" />
+  <!-- Swiper CSS for mobile gallery -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   
   <!-- Contact Form Dropdown Dark Theme Override -->
   <style>
@@ -400,7 +402,7 @@
       <p class="services_text">See the amazing transformations we achieve with our professional cleaning services</p>
       
       <!-- Desktop Gallery Carousel (2 items per slide) - Hidden on mobile -->
-      <div id="gallery_slider_desktop" class="carousel slide d-none d-md-block" data-ride="carousel">
+      <div id="gallery_slider_desktop" class="carousel slide gallery-desktop-carousel" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="services_section_2">
@@ -559,188 +561,156 @@
         </a>
       </div>
 
-      <!-- Mobile Gallery Carousel (1 item per slide) - Hidden on desktop -->
-      <div id="gallery_slider_mobile" class="carousel slide d-md-none" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#gallery_slider_mobile" data-slide-to="0" class="active"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="1"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="2"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="3"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="4"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="5"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="6"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="7"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="8"></li>
-          <li data-target="#gallery_slider_mobile" data-slide-to="9"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_1.jpeg" alt="Before Cleaning" />
-                      <img src="images/gallery/after_1.jpeg" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Living Room Deep Clean</h4>
-                    <p class="gallery-description">Professional carpet and upholstery cleaning with stain removal</p>
-                  </div>
-                </div>
-              </div>
+      <!-- Mobile Gallery Swiper (1 item per slide) - Hidden on desktop -->
+      <div class="swiper gallery-swiper-mobile">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_1.jpeg" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_1.jpeg" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Living Room Deep Clean</h4>
+              <p class="gallery-description">Professional carpet and upholstery cleaning with stain removal</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_2.jpeg" alt="Before Cleaning" />
-                      <img src="images/gallery/after_2.jpeg" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Kitchen & Tile Restoration</h4>
-                    <p class="gallery-description">Complete tile and grout cleaning with sanitization</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_2.jpeg" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_2.jpeg" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Kitchen & Tile Restoration</h4>
+              <p class="gallery-description">Complete tile and grout cleaning with sanitization</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_3.jpeg" alt="Before Cleaning" />
-                      <img src="images/gallery/after_3.jpeg" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Bathroom Deep Clean</h4>
-                    <p class="gallery-description">Complete bathroom sanitization and tile restoration</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_3.jpeg" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_3.jpeg" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Bathroom Deep Clean</h4>
+              <p class="gallery-description">Complete bathroom sanitization and tile restoration</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_4.png" alt="Before Cleaning" />
-                      <img src="images/gallery/after_4.png" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Office Space Cleaning</h4>
-                    <p class="gallery-description">Professional commercial office cleaning and sanitization</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_4.png" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_4.png" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Office Space Cleaning</h4>
+              <p class="gallery-description">Professional commercial office cleaning and sanitization</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_5.jpeg" alt="Before Cleaning" />
-                      <img src="images/gallery/after_5.jpeg" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Carpet Stain Removal</h4>
-                    <p class="gallery-description">Professional carpet cleaning with advanced stain removal</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_5.jpeg" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_5.jpeg" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Carpet Stain Removal</h4>
+              <p class="gallery-description">Professional carpet cleaning with advanced stain removal</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_6.png" alt="Before Cleaning" />
-                      <img src="images/gallery/after_6.png" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">End of Lease Restoration</h4>
-                    <p class="gallery-description">Complete property restoration for bond return</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 6 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_6.png" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_6.png" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">End of Lease Restoration</h4>
+              <p class="gallery-description">Complete property restoration for bond return</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_7.jpeg" alt="Before Cleaning" />
-                      <img src="images/gallery/after_7.jpeg" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Upholstery Cleaning</h4>
-                    <p class="gallery-description">Professional furniture and upholstery deep cleaning</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 7 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_7.jpeg" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_7.jpeg" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Upholstery Cleaning</h4>
+              <p class="gallery-description">Professional furniture and upholstery deep cleaning</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_8.jpeg" alt="Before Cleaning" />
-                      <img src="images/gallery/after_8.jpeg" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Window & Glass Cleaning</h4>
-                    <p class="gallery-description">Crystal clear windows and glass surfaces</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 8 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_8.jpeg" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_8.jpeg" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Window & Glass Cleaning</h4>
+              <p class="gallery-description">Crystal clear windows and glass surfaces</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_9.jpeg" alt="Before Cleaning" />
-                      <img src="images/gallery/after_9.jpeg" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Kitchen Deep Clean</h4>
-                    <p class="gallery-description">Complete kitchen sanitization and appliance cleaning</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 9 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_9.jpeg" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_9.jpeg" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Kitchen Deep Clean</h4>
+              <p class="gallery-description">Complete kitchen sanitization and appliance cleaning</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_10.png" alt="Before Cleaning" />
-                      <img src="images/gallery/after_10.png" alt="After Cleaning" />
-                    </div>
-                    <h4 class="gallery-title">Whole House Restoration</h4>
-                    <p class="gallery-description">Complete home transformation and deep cleaning</p>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Slide 10 -->
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img-comparison-slider class="mobile-comparison-slider">
+                <img slot="first" src="images/gallery/before_10.png" alt="Before Cleaning" />
+                <img slot="second" src="images/gallery/after_10.png" alt="After Cleaning" />
+                <div slot="first-label" class="comparison-label">Before</div>
+                <div slot="second-label" class="comparison-label">After</div>
+              </img-comparison-slider>
+              <h4 class="gallery-title">Whole House Restoration</h4>
+              <p class="gallery-description">Complete home transformation and deep cleaning</p>
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#gallery_slider_mobile" role="button" data-slide="prev">
-          <i class="fa fa-angle-left"></i>
-        </a>
-        <a class="carousel-control-next" href="#gallery_slider_mobile" role="button" data-slide="next">
-          <i class="fa fa-angle-right"></i>
-        </a>
+        
+        <!-- Swiper Pagination -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- Navigation Arrows for Mobile -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </div>
   </div>
@@ -1005,6 +975,11 @@
   <!-- TwentyTwenty JS Dependencies -->
   <script src="js/jquery.event.move.js" type="text/javascript"></script>
   <script src="js/jquery.twentytwenty.js" type="text/javascript"></script>
+  <!-- Swiper JS for mobile gallery -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- img-comparison-slider for better mobile before/after -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css">
   
   <script>
     $(document).ready(function () {
@@ -1037,7 +1012,6 @@
       // Initialize TwentyTwenty only for containers that haven't been initialized
       function initializeTwentyTwenty() {
         $(".twentytwenty-container").each(function() {
-          // Only initialize if not already initialized
           if (!$(this).hasClass('twentytwenty-container-initialized')) {
             $(this).twentytwenty();
           }
@@ -1053,14 +1027,104 @@
       }, 100);
 
       // Initialize TwentyTwenty for newly visible slides only
-      $('#gallery_slider_desktop, #gallery_slider_mobile').on('slid.bs.carousel', function () {
-        // Only initialize containers in the active slide that aren't already initialized
+      $('#gallery_slider_desktop').on('slid.bs.carousel', function () {
         $(this).find('.carousel-item.active .twentytwenty-container').each(function() {
           if (!$(this).hasClass('twentytwenty-container-initialized')) {
             $(this).twentytwenty();
           }
         });
       });
+      
+      // Initialize Swiper for mobile gallery (always initialize, CSS will control visibility)
+      const mobileGallerySwiper = new Swiper('.gallery-swiper-mobile', {
+        slidesPerView: 1.08,
+        centeredSlides: true,
+        spaceBetween: 15,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        autoHeight: false,
+        grabCursor: true,
+        touchRatio: 1,
+        threshold: 15,
+        loop: false,
+        preloadImages: true,
+        lazy: {
+          loadPrevNext: true,
+        },
+        // Prevent swiping when touching comparison sliders
+        noSwiping: true,
+        noSwipingClass: 'mobile-comparison-slider',
+        noSwipingSelector: 'img-comparison-slider',
+        on: {
+          slideChange: function() {
+            // Hide swipe hints after first interaction
+            const swipeHint = document.querySelector('.swipe-hint');
+            const swipeOverlay = document.querySelector('.swipe-hint-overlay');
+            if (swipeHint) swipeHint.style.display = 'none';
+            if (swipeOverlay) swipeOverlay.style.display = 'none';
+          }
+        }
+      });
+      
+      // Add swipe hint only on mobile devices
+      if (window.innerWidth < 768) {
+        const mobileGallery = document.querySelector('.gallery-swiper-mobile');
+        if (mobileGallery) {
+          // Create overlay with gradient edges
+          const swipeOverlay = document.createElement('div');
+          swipeOverlay.className = 'swipe-hint-overlay';
+          mobileGallery.appendChild(swipeOverlay);
+          
+          // Create the swipe hint with hand gesture
+          const swipeHint = document.createElement('div');
+          swipeHint.className = 'swipe-hint';
+          swipeHint.innerHTML = `
+            <div class="swipe-hand-container">
+              <div class="swipe-trail"></div>
+              <span class="swipe-hand">👆</span>
+            </div>
+            <div class="swipe-arrows">
+              <i class="fa fa-chevron-left swipe-arrow swipe-arrow-left"></i>
+              <span class="swipe-hint-text">Swipe for more</span>
+              <i class="fa fa-chevron-right swipe-arrow swipe-arrow-right"></i>
+            </div>
+          `;
+          mobileGallery.appendChild(swipeHint);
+          
+          // Function to hide hints
+          const hideSwipeHints = function() {
+            if (swipeHint) swipeHint.style.display = 'none';
+            if (swipeOverlay) swipeOverlay.style.display = 'none';
+          };
+          
+          // Hide on touch of comparison slider
+          const comparisonSliders = document.querySelectorAll('.mobile-comparison-slider');
+          comparisonSliders.forEach(slider => {
+            slider.addEventListener('touchstart', function(e) {
+              hideSwipeHints();
+              // Stop event from reaching Swiper to prevent slide change
+              e.stopPropagation();
+            }, { passive: true });
+            
+            slider.addEventListener('touchmove', function(e) {
+              // Stop event from reaching Swiper during drag
+              e.stopPropagation();
+            }, { passive: true });
+          });
+          
+          // Also hide on any swipe/touch on the gallery
+          mobileGallery.addEventListener('touchstart', function() {
+            hideSwipeHints();
+          }, { passive: true, once: true });
+        }
+      }
     });
   </script>
   <script>

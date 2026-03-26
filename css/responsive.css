@@ -740,6 +740,43 @@
         height: 280px;
     }
     
+    /* Mobile Swiper Gallery Styles for tablet */
+    .gallery-swiper-mobile {
+        padding-bottom: 70px;
+    }
+    
+    .gallery-swiper-mobile .gallery-item {
+        padding: 25px 20px;
+    }
+    
+    .mobile-comparison-slider {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    }
+    
+    .mobile-comparison-slider img {
+        max-height: 350px;
+    }
+    
+    .comparison-label {
+        font-size: 13px;
+        padding: 7px 14px;
+    }
+    
+    /* Swipe Hint Tablet Styles */
+    .swipe-hint {
+        padding: 11px 22px;
+    }
+    
+    .swipe-hint-text {
+        font-size: 13px;
+    }
+    
+    .swipe-arrow {
+        font-size: 19px;
+    }
+    
     #gallery_slider_mobile .carousel-control-prev,
     #gallery_slider_mobile .carousel-control-next {
         width: 55px;
@@ -1143,6 +1180,64 @@
         padding: 8px 12px;
     }
     
+    /* Mobile Swiper Gallery Styles */
+    .gallery-swiper-mobile {
+        padding-bottom: 70px;
+        display: block !important;
+    }
+    
+    /* Force hide desktop gallery and its controls on mobile */
+    #gallery_slider_desktop,
+    #gallery_slider_desktop .carousel-control-prev,
+    #gallery_slider_desktop .carousel-control-next,
+    .gallery-desktop-carousel,
+    .gallery-desktop-carousel .carousel-control-prev,
+    .gallery-desktop-carousel .carousel-control-next {
+        display: none !important;
+    }
+    
+    .gallery-swiper-mobile .gallery-item {
+        padding: 20px 15px;
+    }
+    
+    .mobile-comparison-slider {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-comparison-slider img {
+        max-height: 300px;
+    }
+    
+    .comparison-label {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    /* Swipe Hint Mobile Styles */
+    .swipe-hint {
+        bottom: 90px;
+    }
+    
+    .swipe-hint-text {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+    
+    .swipe-arrow {
+        font-size: 16px;
+    }
+    
+    .swipe-hand {
+        font-size: 30px;
+    }
+    
+    .swipe-hand-container {
+        width: 100px;
+        height: 50px;
+    }
+    
     #gallery_slider_mobile .carousel-control-prev,
     #gallery_slider_mobile .carousel-control-next {
         width: 50px;
@@ -1324,5 +1419,12 @@
 
     .footer_copyright p {
         font-size: 12px;
+    }
+}
+
+/* Hide swipe hint on desktop/tablet */
+@media (min-width: 768px) {
+    .swipe-hint {
+        display: none !important;
     }
 }
