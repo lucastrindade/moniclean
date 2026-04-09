@@ -6,9 +6,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- mobile metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <!-- site metas -->
   <title>Moniclean - Professional Cleaning Services</title>
   <meta name="keywords" content="house cleaning, professional cleaning services, residential cleaning, home cleaning, moniclean, end of lease, end of lease cleaning, office cleaning">
@@ -87,22 +84,12 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- Responsive-->
   <link rel="stylesheet" href="css/responsive.css">
-  <!-- fevicon -->
-  <link rel="icon" href="images/fevicon.png" type="image/gif" />
-  <!-- Scrollbar Custom CSS -->
-  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-  <!-- Tweaks for older IEs-->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-  <!-- owl stylesheets -->
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-    media="screen">
   <!-- TwentyTwenty CSS -->
   <link rel="stylesheet" href="css/twentytwenty.css" type="text/css" media="screen" />
   <!-- Swiper CSS for mobile gallery -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+
   <!-- Contact Form Dropdown Dark Theme Override -->
   <style>
     /* Nice-Select Dropdown Dark Theme */
@@ -207,7 +194,6 @@
             </div>
           </div>
           <div class="col-sm-2">
-            <!-- <div class="play_icon"><a href="#"><img src="images/play-icon.png" alt="Play Video"></a></div> -->
           </div>
           <div class="col-sm-5">
             <div><img src="images/img-1.png" class="image_1" alt="Professional House Cleaning Service"></div>
@@ -951,17 +937,10 @@
 
   <!-- Javascript files-->
   <script src="js/jquery.min.js"></script>
-  <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/jquery-3.0.0.min.js"></script>
   <script src="js/plugin.js"></script>
-  <!-- sidebar -->
-  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="js/custom.js"></script>
-  <!-- javascript -->
-  <script src="js/owl.carousel.js"></script>
-  <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-  
+
   <!-- TwentyTwenty JS Dependencies -->
   <script src="js/jquery.event.move.js" type="text/javascript"></script>
   <script src="js/jquery.twentytwenty.js" type="text/javascript"></script>
@@ -969,23 +948,9 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- img-comparison-slider for better mobile before/after -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css">
-  
+
   <script>
     $(document).ready(function () {
-      $(".fancybox").fancybox({
-        openEffect: "none",
-        closeEffect: "none"
-      });
-
-      $(".zoom").hover(function () {
-
-        $(this).addClass('transition');
-      }, function () {
-
-        $(this).removeClass('transition');
-      });
-
       // Preload all gallery images to prevent loading delays
       function preloadGalleryImages() {
         var imageUrls = [];
