@@ -14,7 +14,6 @@
 /*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
 
 @import url(normalize.css);
-@import url(font-awesome.min.css);
 @import url(nice-select.css);
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
@@ -22,6 +21,18 @@
 * {
     box-sizing: border-box !important;
     transition: ease all 0.5s;
+}
+
+.icon-chevron {
+    width: 1em;
+    height: 1em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 html {
