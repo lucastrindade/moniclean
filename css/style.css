@@ -750,10 +750,16 @@ button {
     margin: 0 0 16px;
 }
 
-/* Dev-facing flag only — content itself (lorem ipsum) is the real signal to visitors */
-.faq_item_placeholder {
-    border-style: dashed;
-    border-color: #f0ad4e;
+.faq_cta_link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #367d99;
+}
+
+.faq_cta_link:hover {
+    color: #1f1f1f;
 }
 
 /* .swiper.testimonials-swiper (not just .testimonials-swiper): the Swiper CDN
