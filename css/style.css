@@ -520,6 +520,43 @@ button {
     margin-top: 10px;
 }
 
+.trust_strip {
+    width: 100%;
+    float: left;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 22px 0 0;
+    padding: 0;
+}
+
+.trust_strip li {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 7px 16px;
+}
+
+.trust_strip li::before {
+    content: "\2713";
+    margin-right: 6px;
+}
+
+.trust_strip_dark {
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.trust_strip_dark li {
+    color: #89cbeb;
+    background: rgba(137, 203, 235, 0.08);
+    border-color: rgba(137, 203, 235, 0.35);
+}
+
 .cta_button {
     display: inline-flex;
     align-items: center;
@@ -637,7 +674,15 @@ button {
 .services_section {
     width: 100%;
     float: left;
-    padding-bottom: 90px;
+    padding-bottom: 0;
+}
+
+/* #testimonials is the only .services_section whose next sibling (#contact) isn't
+   another .layout_padding section — it's .footer_section, which sets its own top
+   padding (45px) instead of relying on layout_padding's 90px. Without this, the
+   swiper's pagination dots sit flush against the dark contact section. */
+#testimonials {
+    padding-bottom: 46px;
 }
 
 .services_taital {
@@ -654,6 +699,120 @@ button {
     font-size: 16px;
     color: #333333;
     margin-left: 0px;
+}
+
+.faq_list {
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto 0;
+    clear: both;
+}
+
+.faq_item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 4px 20px;
+}
+
+.faq_question {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1f1f1f;
+    padding: 16px 30px 16px 0;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+}
+
+.faq_question::-webkit-details-marker {
+    display: none;
+}
+
+.faq_question::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 14px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #367d99;
+}
+
+.faq_item[open] .faq_question::after {
+    content: "\2212";
+}
+
+.faq_answer {
+    font-size: 15px;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+/* Dev-facing flag only — content itself (lorem ipsum) is the real signal to visitors */
+.faq_item_placeholder {
+    border-style: dashed;
+    border-color: #f0ad4e;
+}
+
+/* .swiper.testimonials-swiper (not just .testimonials-swiper): the Swiper CDN
+   stylesheet loads after this file and sets ".swiper { padding: 0 }" at the same
+   specificity, which wins on load order alone and silently strips this padding. */
+.swiper.testimonials-swiper {
+    width: 100%;
+    clear: both;
+    margin-top: 30px;
+    padding: 4px 4px 44px;
+}
+
+.testimonials-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+    cursor: default;
+}
+
+.testimonial_card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    width: 100%;
+}
+
+.testimonial_card_placeholder {
+    border-style: dashed;
+    border-color: #f0ad4e;
+}
+
+.testimonial_stars {
+    color: #f5a623;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.testimonial_quote {
+    font-size: 15px;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0 0 14px;
+}
+
+.testimonial_author {
+    font-size: 14px;
+    font-weight: 600;
+    color: #367d99;
+    margin: 0;
+}
+
+.testimonials-pagination.swiper-pagination-bullets {
+    bottom: 8px;
+}
+
+.testimonials-pagination .swiper-pagination-bullet-active {
+    background: #367d99;
 }
 
 .box_section {
@@ -1107,6 +1266,38 @@ button {
     box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2) !important;
 }
 
+.field_error {
+    display: block;
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.form_error_summary {
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.4);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+}
+
+.form_error_summary_title {
+    color: #ff6b6b;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+.form_error_summary ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.form_error_summary li {
+    margin-bottom: 2px;
+}
+
 /* Conditional sections */
 .conditional_section {
     background-color: #2d2d2d;
@@ -1497,6 +1688,15 @@ input[type="date"].form_input::-webkit-calendar-picker-indicator {
     font-size: 14px;
     margin: 0;
     line-height: 1.5;
+}
+
+.service_areas_note {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #b0b0b0;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 .footer_section .social_icon {
