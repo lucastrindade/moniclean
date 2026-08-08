@@ -293,31 +293,53 @@
     .header_section {
         background-size: cover;
         padding-top: 15px;
-        padding-bottom: 90px;
+        padding-bottom: 40px;
         background: #89cbeb;
     }
 
     .banner_section {
-        padding-top: 30px;
+        padding-top: 15px;
     }
 
     .banner_taital {
-        font-size: 32px;
+        font-size: 22px;
+        line-height: 1.25;
         text-align: center;
     }
 
     .banner_taital_1 {
-        font-size: 38px;
+        font-size: 26px;
+        line-height: 1.25;
         text-align: center;
     }
 
     .banner_text {
         width: 100%;
-        font-size: 15px;
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .cta_button_wrapper {
+        text-align: center;
+        margin-top: 4px;
+    }
+
+    .trust_strip {
+        justify-content: center;
+        margin-top: 14px;
+    }
+
+    .trust_strip li {
+        font-size: 11px;
+        padding: 5px 12px;
     }
 
     .image_1 {
-        padding-top: 20px;
+        width: 65%;
+        max-width: 260px;
+        margin: 0 auto;
+        display: block;
+        padding-top: 16px;
     }
 
     .services_taital {
