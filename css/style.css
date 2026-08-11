@@ -14,7 +14,6 @@
 /*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
 
 @import url(normalize.css);
-@import url(nice-select.css);
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
@@ -38,6 +37,53 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden !important;
+}
+
+.skip_link {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    z-index: 10000;
+    padding: 12px 24px;
+    background: #367d99;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip_link:focus {
+    top: 0;
+}
+
+.mobile_call_button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    background: #367d99;
+    color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    z-index: 999;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.mobile_call_button:hover,
+.mobile_call_button:focus {
+    background: #89cbeb;
+    color: #1f1f1f;
+    transform: scale(1.05);
+}
+
+@media (max-width: 991px) {
+    .mobile_call_button {
+        display: flex;
+    }
 }
 
 body {
@@ -820,11 +866,24 @@ button {
     background: #367d99;
 }
 
+.services_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    clear: both;
+}
+
+@media (min-width: 768px) {
+    .services_grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 .box_section {
     width: 100%;
-    float: left;
     border: 1px solid #d0d0d0;
-    padding: 30px 20px 0px 20px;
+    padding: 30px 20px 20px 20px;
 }
 
 .box_section:hover {
@@ -832,25 +891,17 @@ button {
     border: 1px solid #89cbeb;
 }
 
-.box_section:hover .tile_text {
-    color: #ffffff;
-}
-
+.box_section:hover .tile_text,
 .box_section:hover .lorem_text {
     color: #ffffff;
 }
 
-.box_section.active {
-    background-color: #89cbeb;
-    border: 1px solid #89cbeb;
-}
-
-/* Service Icon Styles - Single, clean approach */
+/* Service Icon Styles: gray outline icon by default, colored icon on hover */
 .service-icon {
     width: 74px;
     height: 90px;
     margin: 0 auto;
-    display: block;
+    display: none;
     object-fit: contain;
 }
 
@@ -858,26 +909,16 @@ button {
     width: 74px;
     height: 90px;
     margin: 0 auto;
-    display: none; /* Hidden by default */
+    display: block;
     object-fit: contain;
 }
 
-/* Show inactive image when box_section is not active */
-.box_section:not(.active) .service-icon {
-    display: none;
-}
-
-.box_section:not(.active) .service-icon-inactive {
+.box_section:hover .service-icon {
     display: block;
 }
 
-/* Text color for active vs inactive states */
-.box_section:not(.active) .tile_text {
-    color: #084f70;
-}
-
-.box_section:not(.active) .lorem_text {
-    color: #084f70;
+.box_section:hover .service-icon-inactive {
+    display: none;
 }
 
 .box_section:hover .service-icon,
@@ -886,15 +927,11 @@ button {
     transition: transform 0.3s ease;
 }
 
-.box_section.active .service-icon {
-    filter: brightness(1.2);
-}
-
 .tile_text {
     width: 100%;
     float: left;
     font-size: 30px;
-    color: #2d2d2c;
+    color: #084f70;
     text-align: center;
     font-weight: 500;
 }
@@ -903,59 +940,12 @@ button {
     width: 100%;
     float: left;
     font-size: 16px;
-    color: #000000;
+    color: #084f70;
     text-align: center;
     margin-left: 0px;
     font-weight: 500;
 }
 
-.tile_text.active {
-    color: #ffffff;
-}
-
-.lorem_text.active {
-    color: #ffffff;
-}
-
-#main_slider_desktop a.carousel-control-next,
-#main_slider_mobile a.carousel-control-next {
-    position: absolute;
-    right: -30px;
-    top: 65%;
-}
-
-#main_slider_desktop .carousel-control-prev,
-#main_slider_desktop .carousel-control-next,
-#main_slider_mobile .carousel-control-prev,
-#main_slider_mobile .carousel-control-next {
-    width: 65px;
-    height: 65px;
-    background: #404040;
-    opacity: 1;
-    font-size: 30px;
-    color: #ffffff;
-    border-radius: 100%;
-}
-
-#main_slider_desktop a.carousel-control-prev,
-#main_slider_mobile a.carousel-control-prev {
-    position: absolute;
-    left: -30px;
-    top: 65%;
-    background: #367d99;
-}
-
-#main_slider_desktop .carousel-control-prev:hover,
-#main_slider_desktop .carousel-control-next:hover,
-#main_slider_desktop .carousel-control-prev:focus,
-#main_slider_desktop .carousel-control-next:focus,
-#main_slider_mobile .carousel-control-prev:hover,
-#main_slider_mobile .carousel-control-next:hover,
-#main_slider_mobile .carousel-control-prev:focus,
-#main_slider_mobile .carousel-control-next:focus {
-    background: #367d99;
-    color: #fff;
-}
 
 .footer_section {
     width: 100%;
@@ -1102,6 +1092,58 @@ button {
     width: 50%;
 }
 
+/* Two-step form: step indicator */
+.form_step_indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.step_dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #282828;
+    border: 2px solid #4a4a4a;
+    color: #717471;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.step_dot.active {
+    border-color: #89cbeb;
+    color: #89cbeb;
+}
+
+.step_dot.completed {
+    background-color: #89cbeb;
+    border-color: #89cbeb;
+    color: #282828;
+}
+
+.step_dot_label {
+    color: #717471;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.step_dot.active + .step_dot_label {
+    color: #89cbeb;
+}
+
+.step_line {
+    flex: 1;
+    height: 2px;
+    background-color: #4a4a4a;
+}
+
 .form_label {
     display: block;
     color: #89cbeb;
@@ -1161,103 +1203,10 @@ button {
     padding-right: 40px;
 }
 
-/* Hide the background arrow when nice-select is used (nice-select uses :after for arrow) */
-.nice-select.form_select {
-    background-image: none !important;
-}
-
 .form_select option {
-    background-color: #282828 !important;
-    color: #ffffff !important;
-    padding: 10px !important;
-}
-
-/* Force dark styling on all select dropdowns in contact form */
-.contact_form_section select,
-.contact_form_section select option,
-.footer_section select,
-.footer_section select option {
-    background-color: #282828 !important;
-    color: #ffffff !important;
-}
-
-/* Nice-Select Dropdown Override for Dark Theme */
-.contact_form_section .nice-select {
-    background-color: #282828 !important;
-    border: 2px solid #4a4a4a !important;
-    border-radius: 8px !important;
-    color: #ffffff !important;
-    width: 100% !important;
-    float: none !important;
-    line-height: 24px !important;
-    padding: 12px 40px 12px 15px !important;
-    height: auto !important;
-}
-
-.contact_form_section .nice-select:after {
-    border-color: #89cbeb !important;
-    right: 15px !important;
-}
-
-.contact_form_section .nice-select:hover,
-.contact_form_section .nice-select:focus,
-.contact_form_section .nice-select.open {
-    border-color: #89cbeb !important;
-}
-
-.contact_form_section .nice-select .list,
-.contact_form_section .nice-select .nice-select-dropdown,
-.contact_form_section .nice-select ul.list {
-    background-color: #282828 !important;
-    border: 2px solid #4a4a4a !important;
-    border-radius: 8px !important;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
-    margin-top: 5px !important;
-    width: 100% !important;
-    max-height: 250px !important;
-    overflow-y: auto !important;
-}
-
-.contact_form_section .nice-select .option,
-.contact_form_section .nice-select .list li,
-.contact_form_section .nice-select ul.list li {
-    background-color: #282828 !important;
-    color: #ffffff !important;
-    padding: 10px 15px !important;
-    line-height: 24px !important;
-    min-height: auto !important;
-}
-
-.contact_form_section .nice-select .option:hover,
-.contact_form_section .nice-select .option.focus,
-.contact_form_section .nice-select .list li:hover,
-.contact_form_section .nice-select ul.list li:hover {
-    background-color: #367d99 !important;
-    color: #ffffff !important;
-}
-
-.contact_form_section .nice-select .option.selected,
-.contact_form_section .nice-select .list li.selected,
-.contact_form_section .nice-select ul.list li.selected {
-    background-color: #3a3a3a !important;
-    color: #89cbeb !important;
-    font-weight: 600 !important;
-}
-
-.contact_form_section .nice-select .option.selected:hover,
-.contact_form_section .nice-select .list li.selected:hover,
-.contact_form_section .nice-select ul.list li.selected:hover {
-    background-color: #367d99 !important;
-    color: #ffffff !important;
-}
-
-/* Placeholder styling for nice-select */
-.contact_form_section .nice-select .current {
-    color: #717471 !important;
-}
-
-.contact_form_section .nice-select.has-value .current {
-    color: #ffffff !important;
+    background-color: #282828;
+    color: #ffffff;
+    padding: 10px;
 }
 
 .form_textarea {
@@ -1461,6 +1410,19 @@ button {
 
 .submit_btn:active {
     transform: translateY(0);
+}
+
+.submit_btn_secondary {
+    background-color: transparent;
+    color: #89cbeb;
+    border: 2px solid #4a4a4a;
+}
+
+.submit_btn_secondary:hover {
+    background-color: rgba(137, 203, 235, 0.1);
+    color: #89cbeb;
+    border-color: #89cbeb;
+    box-shadow: none;
 }
 
 /* Submit Button Loading State */
@@ -1782,65 +1744,6 @@ input[type="date"].form_input::-webkit-calendar-picker-indicator {
     background: #367d99;
     color: #fff;
 }
-
-/* TwentyTwenty Customization */
-.twentytwenty-container {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
-}
-
-.twentytwenty-container img {
-    max-width: 100%;
-    height: 300px;
-    object-fit: cover;
-    display: block;
-}
-
-.twentytwenty-overlay {
-    background: rgba(8, 79, 112, 0.8);
-}
-
-.twentytwenty-before-label,
-.twentytwenty-after-label {
-    background: rgba(8, 79, 112, 0.9);
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 10px 15px;
-    border-radius: 4px;
-}
-
-.twentytwenty-handle {
-    background: #367d99;
-    border: 3px solid #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.twentytwenty-left-arrow,
-.twentytwenty-right-arrow {
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-}
-
-.twentytwenty-left-arrow {
-    border-right: 8px solid #ffffff;
-}
-
-.twentytwenty-right-arrow {
-    border-left: 8px solid #ffffff;
-}
-
-.twentytwenty-before,
-.twentytwenty-after,
-.twentytwenty-overlay,
-.twentytwenty-handle,
-.twentytwenty-container img {
-  transition: none !important;
-}
-
 
 /* Mobile Gallery Indicators */
 #gallery_slider_mobile .carousel-indicators {

@@ -164,46 +164,13 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- Responsive-->
   <link rel="stylesheet" href="css/responsive.css">
-  <!-- TwentyTwenty CSS -->
-  <link rel="stylesheet" href="css/twentytwenty.css" type="text/css" media="screen" />
   <!-- Swiper CSS for mobile gallery -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
-
-  <!-- Contact Form Dropdown Dark Theme Override -->
-  <style>
-    /* Nice-Select Dropdown Dark Theme */
-    .nice-select .list {
-      background-color: #282828 !important;
-      border: 2px solid #4a4a4a !important;
-      border-radius: 8px !important;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
-    }
-    
-    .nice-select .option {
-      background-color: #282828 !important;
-      color: #ffffff !important;
-    }
-    
-    .nice-select .option:hover,
-    .nice-select .option.focus {
-      background-color: #367d99 !important;
-      color: #ffffff !important;
-    }
-    
-    .nice-select .option.selected {
-      background-color: #3a3a3a !important;
-      color: #89cbeb !important;
-    }
-    
-    .nice-select .option.selected:hover {
-      background-color: #367d99 !important;
-      color: #ffffff !important;
-    }
-  </style>
 </head>
 
 <body>
+  <a class="skip_link" href="#main-content">Skip to content</a>
   <!-- Sticky Navigation (Desktop Only) -->
   <div class="sticky_nav" id="stickyNav">
     <div class="container-fluid">
@@ -222,6 +189,13 @@
     </div>
   </div>
 
+  <!-- Floating tap-to-call button (mobile only) -->
+  <a href="tel:+61403006956" class="mobile_call_button" aria-label="Call MoniClean">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </a>
+
   <!--header section start -->
   <div class="header_section">
     <div class="container-fluid">
@@ -238,7 +212,10 @@
               <li><a href="#testimonials" class="nav_link">Reviews</a></li>
               <li><a href="#contact" class="nav_link nav_cta">Get a Quote</a></li>
             </ul>
-            <!-- Mobile menu toggle -->
+            <!-- Custom mobile menu (not Bootstrap's navbar-collapse): there's no duplicate
+                 implementation here — Bootstrap's JS bundle stays loaded only for the
+                 gallery carousel below. Migrating this working, simple toggle to Bootstrap's
+                 navbar component would add markup and JS coupling for no functional gain. -->
             <button class="mobile_menu_toggle" onclick="toggleMobileMenu()">
               <span></span>
               <span></span>
@@ -257,7 +234,7 @@
       </div>
     </div>
     <!-- banner section start -->
-    <div class="banner_section layout_padding">
+    <div id="main-content" class="banner_section layout_padding">
       <div class="container">
         <div class="row">
           <div class="col-sm-5">
@@ -287,7 +264,7 @@
           <div class="col-sm-2">
           </div>
           <div class="col-sm-5">
-            <div><img src="images/img-1.webp" class="image_1" alt="Professional House Cleaning Service" fetchpriority="high"></div>
+            <div><img src="images/img-1.webp" class="image_1" alt="Professional House Cleaning Service" width="640" height="549" fetchpriority="high"></div>
           </div>
         </div>
       </div>
@@ -298,165 +275,48 @@
   <!-- services section start -->
   <div id="services" class="services_section layout_padding">
     <div class="container">
-      <h2 class="services_taital"><span>Our</span> <img src="images/icon-1.png" alt="Services Icon"> <span
+      <h2 class="services_taital"><span>Our</span> <img src="images/icon-1.png" alt=""> <span
           style="color: #1f1f1f">Services</span></h2>
       <p class="services_text">
         From regular cleans to deep cleaning and end of lease services, we offer professional solutions to keep your home or business looking its best
       </p>
-      <!-- Desktop Carousel (2 items per slide) - Hidden on mobile -->
-      <div id="main_slider_desktop" class="carousel slide d-none d-md-block" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="services_section_2">
-              <div class="row">
-                <!-- Service 1 -->
-                <div class="col-md-6">
-                  <div class="box_section active">
-                    <img src="images/house-icon-active.png" alt="General Cleaning" class="service-icon" loading="lazy" decoding="async">
-                    <img src="images/house-icon.png" alt="General Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
-                    <h3 class="tile_text active">General Cleaning</h3>
-                    <p class="lorem_text active">
-                      Keep your home spotless with our reliable, affordable regular cleaning service.
-                    </p>
-                  </div>
-                </div>
-                <!-- Service 2 -->
-                <div class="col-md-6">
-                  <div class="box_section">
-                    <img src="images/store-icon-active.png" alt="Commercial Cleaning" class="service-icon" loading="lazy" decoding="async">
-                    <img src="images/store-icon.png" alt="Commercial Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
-                    <h3 class="tile_text">Commercial Cleaning</h3>
-                    <p class="lorem_text">
-                      Maintain a professional space with our expert commercial cleaning solutions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="carousel-item">
-            <div class="services_section_2">
-              <div class="row">
-                <!-- Service 3 -->
-                <div class="col-md-6">
-                  <div class="box_section">
-                    <img src="images/vacuum-icon-active.png" alt="Deep Cleaning" class="service-icon" loading="lazy" decoding="async">
-                    <img src="images/vacuum-icon.png" alt="Deep Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
-                    <h3 class="tile_text">Deep Cleaning</h3>
-                    <p class="lorem_text">
-                      Refresh your home with our detailed, top-to-bottom professional deep cleaning.
-                    </p>
-                  </div>
-                </div>
-                <!-- Service 4 -->
-                <div class="col-md-6">
-                  <div class="box_section">
-                    <img src="images/contract-icon-active.png" alt="End of Lease Cleaning" class="service-icon" loading="lazy" decoding="async">
-                    <img src="images/contract-icon.png" alt="End of Lease Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
-                    <h3 class="tile_text">End of Lease Cleaning</h3>
-                    <p class="lorem_text">
-                      Get your bond back with our trusted, thorough end of lease cleaning service.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Single responsive grid (1 col mobile, 2 col desktop) — replaces the old
+           duplicate desktop/mobile carousels. All 4 services are always visible;
+           with only 4 short cards, paginating them added complexity for no benefit
+           and hid content from search engines that don't execute carousel JS. -->
+      <div class="services_grid">
+        <div class="box_section">
+          <img src="images/house-icon-active.png" alt="General Cleaning" class="service-icon" loading="lazy" decoding="async">
+          <img src="images/house-icon.png" alt="General Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
+          <h3 class="tile_text">General Cleaning</h3>
+          <p class="lorem_text">
+            Keep your home spotless with our reliable, affordable regular cleaning service.
+          </p>
         </div>
-        
-        <a class="carousel-control-prev" href="#main_slider_desktop" role="button" data-slide="prev">
-          <svg class="icon-chevron" viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg>
-        </a>
-        <a class="carousel-control-next" href="#main_slider_desktop" role="button" data-slide="next">
-          <svg class="icon-chevron" viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg>
-        </a>
-      </div>
-
-      <!-- Mobile Carousel (1 item per slide) - Hidden on desktop -->
-      <div id="main_slider_mobile" class="carousel slide d-md-none" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#main_slider_mobile" data-slide-to="0" class="active"></li>
-          <li data-target="#main_slider_mobile" data-slide-to="1"></li>
-          <li data-target="#main_slider_mobile" data-slide-to="2"></li>
-          <li data-target="#main_slider_mobile" data-slide-to="3"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="box_section active">
-                    <img src="images/house-icon-active.png" alt="General Cleaning" class="service-icon" loading="lazy" decoding="async">
-                    <img src="images/house-icon.png" alt="General Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
-                    <h3 class="tile_text active">General Cleaning</h3>
-                    <p class="lorem_text active">
-                      Keep your home spotless with our reliable, affordable regular cleaning service.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="box_section">
-                    <img src="images/store-icon-active.png" alt="Commercial Cleaning" class="service-icon" loading="lazy" decoding="async">
-                    <img src="images/store-icon.png" alt="Commercial Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
-                    <h3 class="tile_text">Commercial Cleaning</h3>
-                    <p class="lorem_text">
-                      Maintain a professional space with our expert commercial cleaning solutions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="box_section">
-                    <img src="images/vacuum-icon-active.png" alt="Deep Cleaning" class="service-icon" loading="lazy" decoding="async">
-                    <img src="images/vacuum-icon.png" alt="Deep Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
-                    <h3 class="tile_text">Deep Cleaning</h3>
-                    <p class="lorem_text">
-                      Refresh your home with our detailed, top-to-bottom professional deep cleaning.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="carousel-item">
-            <div class="services_section_2 layout_padding">
-              <div class="row">
-                <div class="col-12">
-                  <div class="box_section">
-                    <img src="images/contract-icon-active.png" alt="End of Lease Cleaning" class="service-icon" loading="lazy" decoding="async">
-                    <img src="images/contract-icon.png" alt="End of Lease Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
-                    <h3 class="tile_text">End of Lease Cleaning</h3>
-                    <p class="lorem_text">
-                      Get your bond back with our trusted, thorough end of lease cleaning service.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="box_section">
+          <img src="images/store-icon-active.png" alt="Commercial Cleaning" class="service-icon" loading="lazy" decoding="async">
+          <img src="images/store-icon.png" alt="Commercial Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
+          <h3 class="tile_text">Commercial Cleaning</h3>
+          <p class="lorem_text">
+            Maintain a professional space with our expert commercial cleaning solutions.
+          </p>
         </div>
-        
-        <a class="carousel-control-prev" href="#main_slider_mobile" role="button" data-slide="prev">
-          <svg class="icon-chevron" viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg>
-        </a>
-        <a class="carousel-control-next" href="#main_slider_mobile" role="button" data-slide="next">
-          <svg class="icon-chevron" viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg>
-        </a>
+        <div class="box_section">
+          <img src="images/vacuum-icon-active.png" alt="Deep Cleaning" class="service-icon" loading="lazy" decoding="async">
+          <img src="images/vacuum-icon.png" alt="Deep Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
+          <h3 class="tile_text">Deep Cleaning</h3>
+          <p class="lorem_text">
+            Refresh your home with our detailed, top-to-bottom professional deep cleaning.
+          </p>
+        </div>
+        <div class="box_section">
+          <img src="images/contract-icon-active.png" alt="End of Lease Cleaning" class="service-icon" loading="lazy" decoding="async">
+          <img src="images/contract-icon.png" alt="End of Lease Cleaning" class="service-icon-inactive" loading="lazy" decoding="async">
+          <h3 class="tile_text">End of Lease Cleaning</h3>
+          <p class="lorem_text">
+            Get your bond back with our trusted, thorough end of lease cleaning service.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -465,7 +325,7 @@
   <!-- Gallery section start -->
   <div id="gallery" class="services_section layout_padding">
     <div class="container">
-      <h2 class="services_taital"><span>Work </span> <img src="images/icon-1.png" alt="Gallery Icon"> <span style="color: #1f1f1f">Gallery</span></h2>
+      <h2 class="services_taital"><span>Work </span> <img src="images/icon-1.png" alt=""> <span style="color: #1f1f1f">Gallery</span></h2>
       <p class="services_text">See the amazing transformations we achieve with our professional cleaning services</p>
       
       <!-- Desktop Gallery Carousel (2 items per slide) - Hidden on mobile -->
@@ -477,23 +337,27 @@
                 <!-- Before/After Comparison 1 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_1.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_1.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Living Room Deep Clean</h4>
-                    <p class="gallery-description">Professional carpet and upholstery cleaning with stain removal</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_1.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_1.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Ceiling Fan Cleaning</h4>
+                    <p class="gallery-description">Removing built-up dust and grime from ceiling fan blades</p>
                   </div>
                 </div>
                 <!-- Before/After Comparison 2 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_2.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_2.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Kitchen & Tile Restoration</h4>
-                    <p class="gallery-description">Complete tile and grout cleaning with sanitization</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_2.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_2.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Tile &amp; Grout Cleaning</h4>
+                    <p class="gallery-description">Deep clean of tiled flooring and grout lines</p>
                   </div>
                 </div>
               </div>
@@ -506,24 +370,28 @@
                 <!-- Before/After Comparison 3 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_3.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_3.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Bathroom Deep Clean</h4>
-                    <p class="gallery-description">Complete bathroom sanitization and tile restoration</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_3.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_3.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Drawer &amp; Wardrobe Organising</h4>
+                    <p class="gallery-description">Tidying and organising a clothing drawer</p>
                   </div>
                 </div>
 
                 <!-- Before/After Comparison 4 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_4.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_4.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Office Space Cleaning</h4>
-                    <p class="gallery-description">Professional commercial office cleaning and sanitization</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_4.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_4.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Rangehood Cabinet Cleaning</h4>
+                    <p class="gallery-description">Degreasing a built-up kitchen rangehood cupboard</p>
                   </div>
                 </div>
               </div>
@@ -536,24 +404,28 @@
                 <!-- Before/After Comparison 5 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_5.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_5.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Carpet Stain Removal</h4>
-                    <p class="gallery-description">Professional carpet cleaning with advanced stain removal</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_5.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_5.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Shower Drain Cleaning</h4>
+                    <p class="gallery-description">Removing grime and buildup from a bathroom floor drain</p>
                   </div>
                 </div>
 
                 <!-- Before/After Comparison 6 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_6.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_6.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">End of Lease Restoration</h4>
-                    <p class="gallery-description">Complete property restoration for bond return</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_6.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_6.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Lounge Room Tidy-Up</h4>
+                    <p class="gallery-description">Clearing and resetting a living space</p>
                   </div>
                 </div>
               </div>
@@ -566,24 +438,28 @@
                 <!-- Before/After Comparison 7 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_7.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_7.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Upholstery Cleaning</h4>
-                    <p class="gallery-description">Professional furniture and upholstery deep cleaning</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_7.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_7.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Kitchen Sink Drain Cleaning</h4>
+                    <p class="gallery-description">Removing rust and grime from a kitchen sink drain</p>
                   </div>
                 </div>
 
                 <!-- Before/After Comparison 8 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_8.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_8.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Window & Glass Cleaning</h4>
-                    <p class="gallery-description">Crystal clear windows and glass surfaces</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_8.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_8.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Kitchen Bench Clean-Up</h4>
+                    <p class="gallery-description">Clearing and wiping down a kitchen benchtop</p>
                   </div>
                 </div>
               </div>
@@ -596,24 +472,28 @@
                 <!-- Before/After Comparison 9 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_9.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_9.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Kitchen Deep Clean</h4>
-                    <p class="gallery-description">Complete kitchen sanitization and appliance cleaning</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_9.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_9.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Bathroom Vanity Cleaning</h4>
+                    <p class="gallery-description">Sink and vanity clean-up and sanitising</p>
                   </div>
                 </div>
 
                 <!-- Before/After Comparison 10 -->
                 <div class="col-md-6">
                   <div class="gallery-item">
-                    <div class="twentytwenty-container">
-                      <img src="images/gallery/before_10.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
-                      <img src="images/gallery/after_10.webp" alt="After Cleaning" loading="lazy" decoding="async" />
-                    </div>
-                    <h4 class="gallery-title">Whole House Restoration</h4>
-                    <p class="gallery-description">Complete home transformation and deep cleaning</p>
+                    <img-comparison-slider class="desktop-comparison-slider">
+                      <img slot="first" src="images/gallery/before_10.webp" alt="Before Cleaning" loading="lazy" decoding="async" />
+                      <img slot="second" src="images/gallery/after_10.webp" alt="After Cleaning" loading="lazy" decoding="async" />
+                      <div slot="first-label" class="comparison-label">Before</div>
+                      <div slot="second-label" class="comparison-label">After</div>
+                    </img-comparison-slider>
+                    <h4 class="gallery-title">Bedroom Tidy-Up</h4>
+                    <p class="gallery-description">Clearing and resetting a bedroom floor</p>
                   </div>
                 </div>
               </div>
@@ -640,8 +520,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Living Room Deep Clean</h4>
-              <p class="gallery-description">Professional carpet and upholstery cleaning with stain removal</p>
+              <h4 class="gallery-title">Ceiling Fan Cleaning</h4>
+              <p class="gallery-description">Removing built-up dust and grime from ceiling fan blades</p>
             </div>
           </div>
           
@@ -654,8 +534,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Kitchen & Tile Restoration</h4>
-              <p class="gallery-description">Complete tile and grout cleaning with sanitization</p>
+              <h4 class="gallery-title">Tile &amp; Grout Cleaning</h4>
+              <p class="gallery-description">Deep clean of tiled flooring and grout lines</p>
             </div>
           </div>
           
@@ -668,8 +548,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Bathroom Deep Clean</h4>
-              <p class="gallery-description">Complete bathroom sanitization and tile restoration</p>
+              <h4 class="gallery-title">Drawer &amp; Wardrobe Organising</h4>
+              <p class="gallery-description">Tidying and organising a clothing drawer</p>
             </div>
           </div>
           
@@ -682,8 +562,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Office Space Cleaning</h4>
-              <p class="gallery-description">Professional commercial office cleaning and sanitization</p>
+              <h4 class="gallery-title">Rangehood Cabinet Cleaning</h4>
+              <p class="gallery-description">Degreasing a built-up kitchen rangehood cupboard</p>
             </div>
           </div>
           
@@ -696,8 +576,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Carpet Stain Removal</h4>
-              <p class="gallery-description">Professional carpet cleaning with advanced stain removal</p>
+              <h4 class="gallery-title">Shower Drain Cleaning</h4>
+              <p class="gallery-description">Removing grime and buildup from a bathroom floor drain</p>
             </div>
           </div>
           
@@ -710,8 +590,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">End of Lease Restoration</h4>
-              <p class="gallery-description">Complete property restoration for bond return</p>
+              <h4 class="gallery-title">Lounge Room Tidy-Up</h4>
+              <p class="gallery-description">Clearing and resetting a living space</p>
             </div>
           </div>
           
@@ -724,8 +604,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Upholstery Cleaning</h4>
-              <p class="gallery-description">Professional furniture and upholstery deep cleaning</p>
+              <h4 class="gallery-title">Kitchen Sink Drain Cleaning</h4>
+              <p class="gallery-description">Removing rust and grime from a kitchen sink drain</p>
             </div>
           </div>
           
@@ -738,8 +618,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Window & Glass Cleaning</h4>
-              <p class="gallery-description">Crystal clear windows and glass surfaces</p>
+              <h4 class="gallery-title">Kitchen Bench Clean-Up</h4>
+              <p class="gallery-description">Clearing and wiping down a kitchen benchtop</p>
             </div>
           </div>
           
@@ -752,8 +632,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Kitchen Deep Clean</h4>
-              <p class="gallery-description">Complete kitchen sanitization and appliance cleaning</p>
+              <h4 class="gallery-title">Bathroom Vanity Cleaning</h4>
+              <p class="gallery-description">Sink and vanity clean-up and sanitising</p>
             </div>
           </div>
           
@@ -766,8 +646,8 @@
                 <div slot="first-label" class="comparison-label">Before</div>
                 <div slot="second-label" class="comparison-label">After</div>
               </img-comparison-slider>
-              <h4 class="gallery-title">Whole House Restoration</h4>
-              <p class="gallery-description">Complete home transformation and deep cleaning</p>
+              <h4 class="gallery-title">Bedroom Tidy-Up</h4>
+              <p class="gallery-description">Clearing and resetting a bedroom floor</p>
             </div>
           </div>
         </div>
@@ -873,9 +753,9 @@
   <div id="contact" class="footer_section layout_padding">
     <div class="container">
       <div class="contact_header">
-        <h2 class="contact_taital"><span>Contact </span> <img src="images/icon-2.png" alt="Contact Icon"> <span>Us</span></h2>
+        <h2 class="contact_taital"><span>Contact </span> <img src="images/icon-2.png" alt=""> <span>Us</span></h2>
         <div class="contact_info_cards">
-          <a href="tel:0403006956" class="contact_card">
+          <a href="tel:+61403006956" class="contact_card">
             <div class="contact_card_icon">
               <img src="images/call-icon.png" alt="Phone">
             </div>
@@ -924,6 +804,16 @@
                   <p class="form_error_summary_title">Please fix the following:</p>
                   <ul id="formErrorList"></ul>
                 </div>
+
+                <div class="form_step_indicator">
+                  <span class="step_dot active" id="stepDot1">1</span>
+                  <span class="step_dot_label">Your details</span>
+                  <span class="step_line"></span>
+                  <span class="step_dot" id="stepDot2">2</span>
+                  <span class="step_dot_label">Cleaning details</span>
+                </div>
+
+                <div class="form_step" id="formStep1">
                 <!-- Row 1: Name and Email -->
                 <div class="form_row">
                   <div class="form_group form_group_half">
@@ -961,6 +851,30 @@
                   </div>
                 </div>
 
+                <!-- Row: Contact Preference -->
+                <div class="form_row">
+                  <div class="form_group form_group_full">
+                    <label for="contact_preference" class="form_label">How do you want to be contacted? <span class="required_asterisk">*</span></label>
+                    <select class="form_select" id="contact_preference" name="contact_preference">
+                      <option value="">Select preference...</option>
+                      <option value="call">Call</option>
+                      <option value="text">Text Message</option>
+                      <option value="email">Email</option>
+                      <option value="whatsapp">WhatsApp</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form_row">
+                  <div class="form_group form_group_full">
+                    <button type="button" class="submit_btn" id="step1ContinueBtn">
+                      <span class="btn_text">Continue</span>
+                    </button>
+                  </div>
+                </div>
+                </div>
+
+                <div class="form_step" id="formStep2" style="display: none;">
                 <!-- Home Cleaning Section (Conditional) -->
                 <div id="home_cleaning_section" class="conditional_section" style="display: none;">
                   <h4 class="section_title">House Characteristics <span class="required_asterisk">*</span></h4>
@@ -1037,31 +951,6 @@
                   </div>
                 </div>
 
-                <!-- Row 5: Contact Preference -->
-                <div class="form_row">
-                  <div class="form_group form_group_full">
-                    <label for="contact_preference" class="form_label">How do you want to be contacted? <span class="required_asterisk">*</span></label>
-                    <select class="form_select" id="contact_preference" name="contact_preference">
-                      <option value="">Select preference...</option>
-                      <option value="call">Call</option>
-                      <option value="text">Text Message</option>
-                      <option value="email">Email</option>
-                      <option value="whatsapp">WhatsApp</option>
-                      <option value="other">Other (specify)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Other Contact Preference (Conditional) -->
-                <div id="other_contact_section" class="conditional_section" style="display: none;">
-                  <div class="form_row">
-                    <div class="form_group form_group_full">
-                      <label for="contact_other_preference" class="form_label">Please specify <span class="required_asterisk">*</span></label>
-                      <input type="text" class="form_input" id="contact_other_preference" name="other_preference" placeholder="How would you like to be contacted?" maxlength="255">
-                    </div>
-                  </div>
-                </div>
-
                 <!-- Row 6: Additional Information -->
                 <div class="form_row">
                   <div class="form_group form_group_full">
@@ -1070,13 +959,19 @@
                   </div>
                 </div>
 
-                <!-- Submit Button -->
+                <!-- Back + Submit Buttons -->
                 <div class="form_row">
-                  <div class="form_group form_group_full">
+                  <div class="form_group form_group_half">
+                    <button type="button" class="submit_btn submit_btn_secondary" id="step2BackBtn">
+                      <span class="btn_text">Back</span>
+                    </button>
+                  </div>
+                  <div class="form_group form_group_half">
                     <button type="submit" class="submit_btn" id="submitBtn">
                       <span class="btn_text">Get a Quote</span>
                     </button>
                   </div>
+                </div>
                 </div>
               </form>
             </div>
@@ -1088,7 +983,7 @@
                 <p>We proudly serve the Lower North Shore, Northern Beaches, and Sydney CBD &amp; Inner City areas</p>
               </div>
               <div class="map-responsive">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212529.16283195795!2d151.21790564999998!3d-33.6631684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2bc0fe4b2f9a2323%3A0x8b3fe05d705d19dd!2sMoniClean!5e0!3m2!1sen!2sau!4v1770086603956!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="MoniClean Service Areas - Lower North Shore, Northern Beaches, and Sydney CBD & Inner City"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212529.16283195795!2d151.21790564999998!3d-33.6631684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2bc0fe4b2f9a2323%3A0x8b3fe05d705d19dd!2sMoniClean!5e0!3m2!1sen!2sau!4v1770086603956!5m2!1sen!2sau" width="600" height="450" style="border:0;" referrerpolicy="no-referrer-when-downgrade" title="Map showing MoniClean service areas" allowfullscreen></iframe>
               </div>
               <p class="service_areas_note">Not sure if we cover your suburb? Get in touch and we'll let you know.</p>
             </div>
@@ -1110,7 +1005,7 @@
         </div>
         <div class="footer_social">
           <ul>
-            <li><a href="https://www.instagram.com/moniclean_" target="_blank" aria-label="Instagram"><img src="images/instagram-icon1.png" alt="Instagram"></a></li>
+            <li><a href="https://www.instagram.com/moniclean_" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="images/instagram-icon1.png" alt="Instagram"></a></li>
           </ul>
         </div>
         <div class="footer_copyright">
@@ -1124,12 +1019,7 @@
   <!-- Javascript files-->
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/nice-select.js"></script>
-  <script src="js/custom.js"></script>
 
-  <!-- TwentyTwenty JS Dependencies -->
-  <script src="js/jquery.event.move.js" type="text/javascript"></script>
-  <script src="js/jquery.twentytwenty.js" type="text/javascript"></script>
   <!-- Swiper JS for mobile gallery -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- img-comparison-slider for better mobile before/after -->
@@ -1137,45 +1027,6 @@
 
   <script>
     $(document).ready(function () {
-      // Preload all gallery images to prevent loading delays
-      function preloadGalleryImages() {
-        var imageUrls = [];
-        $(".twentytwenty-container img").each(function() {
-          imageUrls.push($(this).attr('src'));
-        });
-        
-        imageUrls.forEach(function(url) {
-          var img = new Image();
-          img.src = url;
-        });
-      }
-
-      // Initialize TwentyTwenty only for containers that haven't been initialized
-      function initializeTwentyTwenty() {
-        $(".twentytwenty-container").each(function() {
-          if (!$(this).hasClass('twentytwenty-container-initialized')) {
-            $(this).twentytwenty();
-          }
-        });
-      }
-
-      // Preload images first, then initialize
-      preloadGalleryImages();
-      
-      // Small delay to ensure images start loading
-      setTimeout(function() {
-        initializeTwentyTwenty();
-      }, 100);
-
-      // Initialize TwentyTwenty for newly visible slides only
-      $('#gallery_slider_desktop').on('slid.bs.carousel', function () {
-        $(this).find('.carousel-item.active .twentytwenty-container').each(function() {
-          if (!$(this).hasClass('twentytwenty-container-initialized')) {
-            $(this).twentytwenty();
-          }
-        });
-      });
-      
       // Initialize Swiper for mobile gallery (always initialize, CSS will control visibility)
       const mobileGallerySwiper = new Swiper('.gallery-swiper-mobile', {
         slidesPerView: 1.08,
@@ -1378,31 +1229,22 @@
   <script>
     $(document).ready(function() {
       // Service type conditional sections
+      // Plain show()/hide() rather than slideUp/slideDown: these sections live in
+      // step 2 of the form, and animating a height while its ancestor step is
+      // display:none gives the browser nothing real to measure, so the slide can
+      // settle in the wrong state depending on timing/browser.
       $('#contact_service').on('change', function() {
         var selectedService = $(this).val();
-        
+
         // Hide all conditional sections first
-        $('#home_cleaning_section').slideUp(300);
-        $('#end_of_lease_section').slideUp(300);
-        
+        $('#home_cleaning_section').hide();
+        $('#end_of_lease_section').hide();
+
         // Show relevant section based on selection
         if (selectedService === 'home_cleaning') {
-          $('#home_cleaning_section').slideDown(300);
+          $('#home_cleaning_section').show();
         } else if (selectedService === 'end_of_lease') {
-          $('#end_of_lease_section').slideDown(300);
-        }
-      });
-
-      // Contact preference conditional section
-      $('#contact_preference').on('change', function() {
-        var selectedPreference = $(this).val();
-        
-        if (selectedPreference === 'other') {
-          $('#other_contact_section').slideDown(300);
-          $('#contact_other_preference').prop('required', true);
-        } else {
-          $('#other_contact_section').slideUp(300);
-          $('#contact_other_preference').prop('required', false);
+          $('#end_of_lease_section').show();
         }
       });
 
@@ -1470,142 +1312,174 @@
         $(this).val(formattedValue);
       });
 
-      // Form submission handling
-      $('#contactForm').on('submit', function(e) {
-        e.preventDefault();
-        
-        var isValid = true;
-        var firstInvalid = null;
-        var errorMessages = [];
-
-        // Helper function to mark field as invalid
-        function markInvalid(element, message) {
-          isValid = false;
-          var $el = $(element);
-          $el.addClass('input_error');
-          if (!firstInvalid) firstInvalid = $el;
-          if (message) {
-            errorMessages.push(message);
-            var $group = $el.closest('.form_group');
-            var $err = $group.find('.field_error');
-            if (!$err.length) {
-              $err = $('<span class="field_error"></span>');
-              var $niceSelect = $group.find('.nice-select');
-              if ($niceSelect.length) {
-                $niceSelect.after($err);
-              } else {
-                $el.after($err);
-              }
-            }
-            $err.text(message);
+      // Shared validation helpers (used by both the step 1 "Continue" button and final submit)
+      function markInvalid(result, element, message) {
+        result.isValid = false;
+        var $el = $(element);
+        $el.addClass('input_error');
+        if (!result.firstInvalid) result.firstInvalid = $el;
+        if (message) {
+          result.errorMessages.push(message);
+          var $group = $el.closest('.form_group');
+          var $err = $group.find('.field_error');
+          if (!$err.length) {
+            $err = $('<span class="field_error"></span>');
+            $el.after($err);
           }
+          $err.text(message);
         }
+      }
 
-        // Helper function to mark field as valid
-        function markValid(element) {
-          var $el = $(element);
-          $el.removeClass('input_error');
-          $el.closest('.form_group').find('.field_error').remove();
-        }
+      function markValid(element) {
+        var $el = $(element);
+        $el.removeClass('input_error');
+        $el.closest('.form_group').find('.field_error').remove();
+      }
 
-        // 1. Name is required
+      // Step 1 fields: name, email/phone, suburb, service, contact preference
+      function validateStep1(result) {
         var name = $('#contact_name').val().trim();
         if (!name) {
-          markInvalid('#contact_name', 'Name is required');
+          markInvalid(result, '#contact_name', 'Name is required');
         } else {
           markValid('#contact_name');
         }
 
-        // 2. Email OR Phone is required (at least one)
         var email = $('#contact_email').val().trim();
         var phone = $('#contact_phone').val().trim();
 
         if (!email && !phone) {
-          markInvalid('#contact_email', 'Please provide either an email or phone number');
-          markInvalid('#contact_phone', 'Please provide either an email or phone number');
+          markInvalid(result, '#contact_email', 'Please provide either an email or phone number');
+          markInvalid(result, '#contact_phone', 'Please provide either an email or phone number');
         } else {
           markValid('#contact_email');
           markValid('#contact_phone');
-          
-          // Validate email format if provided
+
           if (email && !isValidEmail(email)) {
-            markInvalid('#contact_email', 'Please enter a valid email address');
+            markInvalid(result, '#contact_email', 'Please enter a valid email address');
           }
         }
-        
-        // 3. Suburb is required
+
         var suburb = $('#contact_suburb').val().trim();
         if (!suburb) {
-          markInvalid('#contact_suburb', 'Suburb is required');
+          markInvalid(result, '#contact_suburb', 'Suburb is required');
         } else {
           markValid('#contact_suburb');
         }
-        
-        // 4. Service is required
+
         var service = $('#contact_service').val();
         if (!service) {
-          markInvalid('#contact_service', 'Please select a service');
-          // Also highlight the nice-select wrapper
-          $('#contact_service').closest('.form_group').find('.nice-select').addClass('input_error');
+          markInvalid(result, '#contact_service', 'Please select a service');
         } else {
           markValid('#contact_service');
-          $('#contact_service').closest('.form_group').find('.nice-select').removeClass('input_error');
         }
-        
-        // 5. House characteristics required when Home Cleaning is selected
+
+        var contactPreference = $('#contact_preference').val();
+        if (!contactPreference) {
+          markInvalid(result, '#contact_preference', 'Please select how you want to be contacted');
+        } else {
+          markValid('#contact_preference');
+        }
+
+        return service;
+      }
+
+      // Step 2 fields: conditional house characteristics (only required for Home Cleaning)
+      function validateStep2(result, service) {
         if (service === 'home_cleaning') {
           var bedrooms = parseInt($('#contact_bedrooms').val());
           var bathrooms = parseFloat($('#contact_bathrooms').val());
-          
+
           if (isNaN(bedrooms) || bedrooms < 1) {
-            markInvalid('#contact_bedrooms', 'Please specify number of bedrooms');
+            markInvalid(result, '#contact_bedrooms', 'Please specify number of bedrooms');
           } else {
             markValid('#contact_bedrooms');
           }
-          
+
           if (isNaN(bathrooms) || bathrooms < 0.5) {
-            markInvalid('#contact_bathrooms', 'Please specify number of bathrooms');
+            markInvalid(result, '#contact_bathrooms', 'Please specify number of bathrooms');
           } else {
             markValid('#contact_bathrooms');
           }
         }
-        
-        // 6. Contact preference is required
-        var contactPreference = $('#contact_preference').val();
-        if (!contactPreference) {
-          markInvalid('#contact_preference', 'Please select how you want to be contacted');
-          $('#contact_preference').closest('.form_group').find('.nice-select').addClass('input_error');
-        } else {
-          markValid('#contact_preference');
-          $('#contact_preference').closest('.form_group').find('.nice-select').removeClass('input_error');
-          
-          // Check "Other" contact preference if selected
-          if (contactPreference === 'other' && !$('#contact_other_preference').val().trim()) {
-            markInvalid('#contact_other_preference', 'Please specify your preferred contact method');
-          }
-        }
-        
-        if (!isValid) {
-          // Show inline error summary at the top of the form
-          var $summary = $('#formErrorSummary');
-          var $list = $('#formErrorList');
-          $list.empty();
-          errorMessages.forEach(function (msg) {
-            $list.append($('<li></li>').text(msg));
-          });
-          $summary.show();
+      }
 
-          // Scroll to the summary if the first invalid field is off-screen above it,
-          // otherwise scroll straight to the first invalid field
-          var $scrollTarget = $summary.is(':visible') ? $summary : firstInvalid;
-          if ($scrollTarget) {
-            $('html, body').animate({
-              scrollTop: $scrollTarget.offset().top - 100
-            }, 300);
+      function showValidationErrors(result) {
+        var $summary = $('#formErrorSummary');
+        var $list = $('#formErrorList');
+        $list.empty();
+        result.errorMessages.forEach(function (msg) {
+          $list.append($('<li></li>').text(msg));
+        });
+        $summary.show();
+
+        // Scroll to the summary if the first invalid field is off-screen above it,
+        // otherwise scroll straight to the first invalid field
+        var $scrollTarget = $summary.is(':visible') ? $summary : result.firstInvalid;
+        if ($scrollTarget) {
+          $('html, body').animate({
+            scrollTop: $scrollTarget.offset().top - 100
+          }, 300);
+        }
+        if (result.firstInvalid) {
+          result.firstInvalid.focus();
+        }
+      }
+
+      // Switches between the two form steps and keeps the step indicator in sync
+      function goToStep(step) {
+        if (step === 2) {
+          $('#formStep1').hide();
+          $('#formStep2').show();
+          $('#stepDot1').removeClass('active').addClass('completed');
+          $('#stepDot2').addClass('active');
+        } else {
+          $('#formStep2').hide();
+          $('#formStep1').show();
+          $('#stepDot2').removeClass('active');
+          $('#stepDot1').addClass('active').removeClass('completed');
+        }
+        var $form = $('#contactForm');
+        if ($form.length) {
+          $('html, body').animate({
+            scrollTop: $form.offset().top - 100
+          }, 300);
+        }
+      }
+
+      // Step 1 "Continue" — validate the essentials, then advance to step 2
+      $('#step1ContinueBtn').on('click', function() {
+        var result = { isValid: true, firstInvalid: null, errorMessages: [] };
+        validateStep1(result);
+
+        if (!result.isValid) {
+          showValidationErrors(result);
+          return;
+        }
+
+        $('#formErrorSummary').hide();
+        goToStep(2);
+      });
+
+      // Step 2 "Back" — no validation needed going backward
+      $('#step2BackBtn').on('click', function() {
+        goToStep(1);
+      });
+
+      // Form submission handling
+      $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+
+        var result = { isValid: true, firstInvalid: null, errorMessages: [] };
+        var service = validateStep1(result);
+        validateStep2(result, service);
+
+        if (!result.isValid) {
+          // If the offending field lives on step 1 (which may be hidden while on step 2), show it first
+          if (result.firstInvalid && result.firstInvalid.closest('#formStep1').length) {
+            goToStep(1);
           }
-          if (firstInvalid) {
-            firstInvalid.focus();
-          }
+          showValidationErrors(result);
           return false;
         }
 
@@ -1646,12 +1520,6 @@
           formData.oven_cleaning = $('#contact_oven_cleaning').is(':checked') ? 'Yes' : 'No';
           formData.carpet_cleaning = $('#contact_carpet_cleaning').is(':checked') ? 'Yes' : 'No';
         }
-        
-        // Add "Other" contact preference if specified
-        if ($('#contact_preference').val() === 'other') {
-          formData.other_contact_preference = $('#contact_other_preference').val().trim();
-        }
-        
         // Store form reference for reset
         var form = this;
         
@@ -1672,26 +1540,20 @@
             $('.field_error').remove();
             $('.input_error').removeClass('input_error');
 
-            // Reset the form
+            // Reset the form (native <select> elements reset automatically)
             form.reset();
-            
-            // Reset nice-select displays - reset each one individually
-            $('.nice-select').each(function() {
-              var firstOptionText = $(this).find('.option:first-child').text();
-              $(this).find('.current').text(firstOptionText);
-              $(this).find('.option').removeClass('selected');
-              $(this).find('.option:first-child').addClass('selected');
-            });
-            
+
             // Reset conditional sections
-            $('#home_cleaning_section').slideUp(300);
-            $('#end_of_lease_section').slideUp(300);
-            $('#other_contact_section').slideUp(300);
+            $('#home_cleaning_section').hide();
+            $('#end_of_lease_section').hide();
             
             // Reset quantity selectors
             $('#contact_bedrooms').val(1);
             $('#contact_bathrooms').val(1);
             $('#contact_other_rooms').val(0);
+
+            // Reset the two-step form back to step 1 for the next visitor
+            goToStep(1);
           },
           error: function(xhr, status, error) {
             // Show error message
@@ -1742,77 +1604,13 @@
       $('.form_input, .form_select, .form_textarea').on('input change', function() {
         $(this).removeClass('input_error');
         $(this).closest('.form_group').find('.field_error').remove();
-        // Also remove from associated nice-select if exists
-        $(this).closest('.form_group').find('.nice-select').removeClass('input_error');
       });
-      
-      // Remove error styling when nice-select is clicked
-      $(document).on('click', '.nice-select', function() {
-        $(this).removeClass('input_error');
-      });
-      
+
       // Email validation helper
       function isValidEmail(email) {
         var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
       }
-
-      // Apply dark theme to nice-select dropdowns
-      function applyNiceSelectDarkTheme() {
-        // Prevent nice-select list from receiving tab focus
-        $('.nice-select .list').attr('tabindex', '-1');
-        
-        // Style the dropdown lists
-        $('.nice-select .list').css({
-          'background-color': '#282828',
-          'border': '2px solid #4a4a4a',
-          'border-radius': '8px',
-          'box-shadow': '0 5px 20px rgba(0, 0, 0, 0.4)'
-        });
-        
-        // Style all options
-        $('.nice-select .option').css({
-          'background-color': '#282828',
-          'color': '#ffffff'
-        });
-        
-        // Add hover effect via event handlers
-        $('.nice-select .option').hover(
-          function() {
-            $(this).css({
-              'background-color': '#367d99',
-              'color': '#ffffff'
-            });
-          },
-          function() {
-            if ($(this).hasClass('selected')) {
-              $(this).css({
-                'background-color': '#3a3a3a',
-                'color': '#89cbeb'
-              });
-            } else {
-              $(this).css({
-                'background-color': '#282828',
-                'color': '#ffffff'
-              });
-            }
-          }
-        );
-        
-        // Style selected options
-        $('.nice-select .option.selected').css({
-          'background-color': '#3a3a3a',
-          'color': '#89cbeb'
-        });
-      }
-      
-      // Apply theme on page load
-      applyNiceSelectDarkTheme();
-      
-      // Re-apply theme when nice-select is opened (in case of dynamic changes)
-      $(document).on('click', '.nice-select', function() {
-        setTimeout(applyNiceSelectDarkTheme, 10);
-      });
     });
   </script>
 </body>

@@ -228,10 +228,6 @@
         padding: 0 15px;
     }
     
-    .twentytwenty-container img {
-        height: 280px;
-    }
-    
     /* Mobile Swiper Gallery Styles for tablet */
     .gallery-swiper-mobile {
         padding-bottom: 70px;
@@ -402,54 +398,6 @@
         font-size: 14px;
     }
     
-    /* Mobile carousel controls styling - matching desktop format */
-    #main_slider_desktop a.carousel-control-prev,
-    #main_slider_desktop a.carousel-control-next,
-    #main_slider_mobile a.carousel-control-prev,
-    #main_slider_mobile a.carousel-control-next {
-        background: #367d99;
-        opacity: 1;
-        font-size: 30px;
-        color: #ffffff;
-        border-radius: 100%;
-        top: 68%;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-    }
-    
-    #main_slider_desktop a.carousel-control-prev,
-    #main_slider_mobile a.carousel-control-prev {
-        left: -13px;
-    }
-    
-    #main_slider_desktop a.carousel-control-next,
-    #main_slider_mobile a.carousel-control-next {
-        right: -13px;
-    }
-    
-    #main_slider_desktop a.carousel-control-prev:hover,
-    #main_slider_desktop a.carousel-control-next:hover,
-    #main_slider_desktop a.carousel-control-prev:focus,
-    #main_slider_desktop a.carousel-control-next:focus,
-    #main_slider_mobile a.carousel-control-prev:hover,
-    #main_slider_mobile a.carousel-control-next:hover,
-    #main_slider_mobile a.carousel-control-prev:focus,
-    #main_slider_mobile a.carousel-control-next:focus {
-        background: #367d99;
-        color: #fff;
-    }
-    
-    /* Mobile carousel specific styles */
-    #main_slider_mobile .carousel-item .col-12 {
-        width: 100%;
-        max-width: 100%;
-        flex: 0 0 100%;
-    }
-
     /* Gallery responsive styles */
     .gallery-title {
         font-size: 20px;
@@ -463,16 +411,6 @@
     
     .gallery-item {
         padding: 15px 10px;
-    }
-    
-    .twentytwenty-container img {
-        height: 250px;
-    }
-    
-    .twentytwenty-before-label,
-    .twentytwenty-after-label {
-        font-size: 14px;
-        padding: 8px 12px;
     }
     
     /* Mobile Swiper Gallery Styles */
