@@ -11,10 +11,6 @@
  ----------------------------------------*****/
 
 
-/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
-
-@import url(normalize.css);
-
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
 * {
@@ -37,6 +33,25 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Anchor-link targets: offset for the sticky nav (desktop-only, 80px tall) so
+   smooth-scroll doesn't land underneath it. Not needed on mobile/tablet, where
+   the sticky nav stays display:none. */
+@media (min-width: 992px) {
+    #services,
+    #gallery,
+    #faq,
+    #testimonials,
+    #contact {
+        scroll-margin-top: 80px;
+    }
 }
 
 .skip_link {
@@ -1092,56 +1107,14 @@ button {
     width: 50%;
 }
 
-/* Two-step form: step indicator */
-.form_step_indicator {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.step_dot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background-color: #282828;
-    border: 2px solid #4a4a4a;
-    color: #717471;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.step_dot.active {
-    border-color: #89cbeb;
-    color: #89cbeb;
-}
-
-.step_dot.completed {
-    background-color: #89cbeb;
-    border-color: #89cbeb;
-    color: #282828;
-}
-
-.step_dot_label {
-    color: #717471;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.step_dot.active + .step_dot_label {
-    color: #89cbeb;
-}
-
-.step_line {
-    flex: 1;
-    height: 2px;
-    background-color: #4a4a4a;
+.form_group_extra {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .form_label {
@@ -1410,19 +1383,6 @@ button {
 
 .submit_btn:active {
     transform: translateY(0);
-}
-
-.submit_btn_secondary {
-    background-color: transparent;
-    color: #89cbeb;
-    border: 2px solid #4a4a4a;
-}
-
-.submit_btn_secondary:hover {
-    background-color: rgba(137, 203, 235, 0.1);
-    color: #89cbeb;
-    border-color: #89cbeb;
-    box-shadow: none;
 }
 
 /* Submit Button Loading State */

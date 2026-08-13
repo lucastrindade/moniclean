@@ -2,7 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://moniclean.com.au/sitemap.xml
-
-# Common crawl delay
-Crawl-delay: 1 
+Sitemap: https://moniclean.com.au/sitemap.xml 

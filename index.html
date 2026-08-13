@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- site metas -->
   <title>House & End of Lease Cleaning | Lower North Shore Sydney | Moniclean</title>
-  <meta name="keywords" content="house cleaning, professional cleaning services, residential cleaning, home cleaning, moniclean, end of lease, end of lease cleaning, office cleaning, Lower North Shore, Northern Beaches, Sydney CBD, Inner City, Sydney">
   <meta name="description" content="Moniclean provides house, end of lease and commercial cleaning across Sydney's Lower North Shore, Northern Beaches, and CBD & Inner City. 5.0-star rated, free quotes.">
   <meta name="author" content="Moniclean">
+  <meta name="theme-color" content="#89cbeb">
 
   <!-- Open Graph meta tags for social sharing -->
   <meta property="og:title" content="House & End of Lease Cleaning | Lower North Shore Sydney | Moniclean">
@@ -19,6 +19,7 @@
   <meta property="og:url" content="https://moniclean.com.au/">
   <meta property="og:image" content="https://moniclean.com.au/images/logo.png">
   <meta property="og:site_name" content="Moniclean">
+  <meta property="og:locale" content="en_AU">
   
   <!-- Twitter Card meta tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -165,8 +166,8 @@
   <!-- Responsive-->
   <link rel="stylesheet" href="css/responsive.css">
   <!-- Swiper CSS for mobile gallery -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css" integrity="sha384-gAPqlBuTCdtVcYt9ocMOYWrnBZ4XSL6q+4eXqwNycOr4iFczhNKtnYhF3NEXJM51" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8.0.7/dist/styles.css" integrity="sha384-TYCxyqTqCrHZ0yHG2B7VENYnxnIBGWt8GHLLkGegAYCw+1UkvUd0YpsVPrt+8//z" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -197,7 +198,7 @@
   </a>
 
   <!--header section start -->
-  <div class="header_section">
+  <header class="header_section">
     <div class="container-fluid">
       <div class="row align-items-center">
         <div class="col-6 col-md-3">
@@ -216,7 +217,7 @@
                  implementation here — Bootstrap's JS bundle stays loaded only for the
                  gallery carousel below. Migrating this working, simple toggle to Bootstrap's
                  navbar component would add markup and JS coupling for no functional gain. -->
-            <button class="mobile_menu_toggle" onclick="toggleMobileMenu()">
+            <button class="mobile_menu_toggle" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
               <span></span>
               <span></span>
               <span></span>
@@ -270,10 +271,11 @@
       </div>
     </div>
     <!-- banner section end -->
-  </div>
+  </header>
   <!-- header section end -->
+  <main>
   <!-- services section start -->
-  <div id="services" class="services_section layout_padding">
+  <section id="services" class="services_section layout_padding">
     <div class="container">
       <h2 class="services_taital"><span>Our</span> <img src="images/icon-1.png" alt=""> <span
           style="color: #1f1f1f">Services</span></h2>
@@ -319,11 +321,11 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- services section start -->
-  
+  </section>
+  <!-- services section end -->
+
   <!-- Gallery section start -->
-  <div id="gallery" class="services_section layout_padding">
+  <section id="gallery" class="services_section layout_padding">
     <div class="container">
       <h2 class="services_taital"><span>Work </span> <img src="images/icon-1.png" alt=""> <span style="color: #1f1f1f">Gallery</span></h2>
       <p class="services_text">See the amazing transformations we achieve with our professional cleaning services</p>
@@ -660,11 +662,11 @@
         <div class="swiper-button-next"></div>
       </div>
     </div>
-  </div>
+  </section>
   <!-- Gallery section end -->
 
   <!-- FAQ section start -->
-  <div id="faq" class="services_section layout_padding">
+  <section id="faq" class="services_section layout_padding">
     <div class="container">
       <h2 class="services_taital"><span>FAQ</span> <img src="images/icon-1.png" alt=""> <span style="color: #1f1f1f">&amp; Answers</span></h2>
       <p class="services_text">Answers to what people usually ask before booking a clean</p>
@@ -694,14 +696,14 @@
         </details>
       </div>
     </div>
-  </div>
+  </section>
   <!-- FAQ section end -->
 
   <!-- Testimonials section start -->
   <!-- TODO(owner): PLACEHOLDER lorem ipsum testimonials below — replace with real
        customer quotes (with permission to use them) before going live. Also replace
        the placeholder "review" entries in the LocalBusiness JSON-LD in <head> to match. -->
-  <div id="testimonials" class="services_section layout_padding">
+  <section id="testimonials" class="services_section layout_padding">
     <div class="container">
       <h2 class="services_taital"><span>What Our</span> <img src="images/icon-1.png" alt=""> <span style="color: #1f1f1f">Clients Say</span></h2>
       <p class="services_text">Don't just take our word for it</p>
@@ -746,11 +748,11 @@
         <div class="swiper-pagination testimonials-pagination"></div>
       </div>
     </div>
-  </div>
+  </section>
   <!-- Testimonials section end -->
 
   <!-- footer section start -->
-  <div id="contact" class="footer_section layout_padding">
+  <section id="contact" class="footer_section layout_padding">
     <div class="container">
       <div class="contact_header">
         <h2 class="contact_taital"><span>Contact </span> <img src="images/icon-2.png" alt=""> <span>Us</span></h2>
@@ -805,24 +807,15 @@
                   <ul id="formErrorList"></ul>
                 </div>
 
-                <div class="form_step_indicator">
-                  <span class="step_dot active" id="stepDot1">1</span>
-                  <span class="step_dot_label">Your details</span>
-                  <span class="step_line"></span>
-                  <span class="step_dot" id="stepDot2">2</span>
-                  <span class="step_dot_label">Cleaning details</span>
-                </div>
-
-                <div class="form_step" id="formStep1">
                 <!-- Row 1: Name and Email -->
                 <div class="form_row">
                   <div class="form_group form_group_half">
                     <label for="contact_name" class="form_label">Name <span class="required_asterisk">*</span></label>
-                    <input type="text" class="form_input" id="contact_name" name="name" placeholder="Your name" maxlength="100" required>
+                    <input type="text" class="form_input" id="contact_name" name="name" placeholder="Your name" maxlength="100" autocomplete="name" required>
                   </div>
                   <div class="form_group form_group_half">
                     <label for="contact_email" class="form_label">Email <span class="required_hint">(email or phone required)</span></label>
-                    <input type="email" class="form_input" id="contact_email" name="email" placeholder="your@email.com" maxlength="60">
+                    <input type="email" class="form_input" id="contact_email" name="email" placeholder="your@email.com" maxlength="60" autocomplete="email">
                   </div>
                 </div>
 
@@ -830,11 +823,11 @@
                 <div class="form_row">
                   <div class="form_group form_group_half">
                     <label for="contact_phone" class="form_label">Phone <span class="required_hint">(email or phone required)</span></label>
-                    <input type="tel" class="form_input" id="contact_phone" name="phone" placeholder="0412 345 678" maxlength="12">
+                    <input type="tel" class="form_input" id="contact_phone" name="phone" placeholder="0412 345 678" maxlength="20" autocomplete="tel" inputmode="tel">
                   </div>
                   <div class="form_group form_group_half">
                     <label for="contact_suburb" class="form_label">Suburb <span class="required_asterisk">*</span></label>
-                    <input type="text" class="form_input" id="contact_suburb" name="suburb" placeholder="Your suburb" maxlength="100" required>
+                    <input type="text" class="form_input" id="contact_suburb" name="suburb" placeholder="Your suburb" maxlength="100" autocomplete="address-level2" required>
                   </div>
                 </div>
 
@@ -851,30 +844,6 @@
                   </div>
                 </div>
 
-                <!-- Row: Contact Preference -->
-                <div class="form_row">
-                  <div class="form_group form_group_full">
-                    <label for="contact_preference" class="form_label">How do you want to be contacted? <span class="required_asterisk">*</span></label>
-                    <select class="form_select" id="contact_preference" name="contact_preference">
-                      <option value="">Select preference...</option>
-                      <option value="call">Call</option>
-                      <option value="text">Text Message</option>
-                      <option value="email">Email</option>
-                      <option value="whatsapp">WhatsApp</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form_row">
-                  <div class="form_group form_group_full">
-                    <button type="button" class="submit_btn" id="step1ContinueBtn">
-                      <span class="btn_text">Continue</span>
-                    </button>
-                  </div>
-                </div>
-                </div>
-
-                <div class="form_step" id="formStep2" style="display: none;">
                 <!-- Home Cleaning Section (Conditional) -->
                 <div id="home_cleaning_section" class="conditional_section" style="display: none;">
                   <h4 class="section_title">House Characteristics <span class="required_asterisk">*</span></h4>
@@ -951,6 +920,20 @@
                   </div>
                 </div>
 
+                <!-- Row 5: Contact Preference -->
+                <div class="form_row">
+                  <div class="form_group form_group_full">
+                    <label for="contact_preference" class="form_label">How do you want to be contacted? <span class="required_asterisk">*</span></label>
+                    <select class="form_select" id="contact_preference" name="contact_preference" required>
+                      <option value="">Select preference...</option>
+                      <option value="call">Call</option>
+                      <option value="text">Text Message</option>
+                      <option value="email">Email</option>
+                      <option value="whatsapp">WhatsApp</option>
+                    </select>
+                  </div>
+                </div>
+
                 <!-- Row 6: Additional Information -->
                 <div class="form_row">
                   <div class="form_group form_group_full">
@@ -959,19 +942,19 @@
                   </div>
                 </div>
 
-                <!-- Back + Submit Buttons -->
+                <!-- Row 7: Contact Company *** -->
+                <div class="form_group_extra">
+                  <label for="contact_company">Company</label>
+                  <input type="text" id="contact_company" name="company" autocomplete="off" tabindex="-1">
+                </div>
+
+                <!-- Submit Button -->
                 <div class="form_row">
-                  <div class="form_group form_group_half">
-                    <button type="button" class="submit_btn submit_btn_secondary" id="step2BackBtn">
-                      <span class="btn_text">Back</span>
-                    </button>
-                  </div>
-                  <div class="form_group form_group_half">
+                  <div class="form_group form_group_full">
                     <button type="submit" class="submit_btn" id="submitBtn">
                       <span class="btn_text">Get a Quote</span>
                     </button>
                   </div>
-                </div>
                 </div>
               </form>
             </div>
@@ -991,8 +974,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!-- contact section end -->
+  </main>
 
   <!-- Footer -->
   <footer class="site_footer">
@@ -1009,7 +993,7 @@
           </ul>
         </div>
         <div class="footer_copyright">
-          <p>&copy; 2026 MoniClean. All rights reserved.</p>
+          <p>&copy; <span id="copyrightYear">2026</span> MoniClean. All rights reserved.</p>
         </div>
       </div>
     </div>
@@ -1021,9 +1005,9 @@
   <script src="js/bootstrap.bundle.min.js"></script>
 
   <!-- Swiper JS for mobile gallery -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js" integrity="sha384-2UI1PfnXFjVMQ7/ZDEF70CR943oH3v6uZrFQGGqJYlvhh4g6z6uVktxYbOlAczav" crossorigin="anonymous"></script>
   <!-- img-comparison-slider for better mobile before/after -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8.0.7/dist/index.js" integrity="sha384-FCXElAg99YO+h+5Ky3gZ9cVwc8wyg6sq3jn79ugH0u5jh0NR5cvr0hGP+tzpjI+A" crossorigin="anonymous"></script>
 
   <script>
     $(document).ready(function () {
@@ -1046,13 +1030,7 @@
         touchRatio: 1,
         threshold: 15,
         loop: false,
-        preloadImages: true,
-        lazy: {
-          loadPrevNext: true,
-        },
         // Prevent swiping when touching comparison sliders
-        noSwiping: true,
-        noSwipingClass: 'mobile-comparison-slider',
         noSwipingSelector: 'img-comparison-slider',
         on: {
           slideChange: function() {
@@ -1157,15 +1135,19 @@
     function toggleMobileMenu() {
       var menu = document.getElementById('mobileMenu');
       var toggle = document.querySelector('.mobile_menu_toggle');
-      menu.classList.toggle('active');
-      toggle.classList.toggle('active');
+      var isOpen = menu.classList.toggle('active');
+      toggle.classList.toggle('active', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     }
-    
+
     function closeMobileMenu() {
       var menu = document.getElementById('mobileMenu');
       var toggle = document.querySelector('.mobile_menu_toggle');
       menu.classList.remove('active');
       toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
     }
     
     // Close mobile menu when clicking outside
@@ -1177,47 +1159,34 @@
       }
     });
     
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            const headerHeight = 80;
-            const targetPosition = target.offsetTop - headerHeight;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
-        }
-      });
-    });
-    
+    // Smooth scroll for anchor links is handled natively — see `scroll-behavior: smooth`
+    // and `scroll-margin-top` in style.css, so no JS scroll handler is needed here.
+
+    // Keep the footer copyright year current without hardcoding it
+    var copyrightYearEl = document.getElementById('copyrightYear');
+    if (copyrightYearEl) {
+      copyrightYearEl.textContent = new Date().getFullYear();
+    }
+
     // Sticky Navigation (Desktop Only)
     (function() {
       var stickyNav = document.getElementById('stickyNav');
       var scrollThreshold = 400; // Show sticky nav after scrolling 400px
-      var lastScrollTop = 0;
-      
+
       function handleScroll() {
         // Only apply on desktop (>991px)
         if (window.innerWidth <= 991) {
           stickyNav.classList.remove('visible');
           return;
         }
-        
+
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         if (scrollTop > scrollThreshold) {
           stickyNav.classList.add('visible');
         } else {
           stickyNav.classList.remove('visible');
         }
-        
-        lastScrollTop = scrollTop;
       }
       
       window.addEventListener('scroll', handleScroll);
@@ -1312,7 +1281,7 @@
         $(this).val(formattedValue);
       });
 
-      // Shared validation helpers (used by both the step 1 "Continue" button and final submit)
+      // Shared validation helpers
       function markInvalid(result, element, message) {
         result.isValid = false;
         var $el = $(element);
@@ -1336,8 +1305,9 @@
         $el.closest('.form_group').find('.field_error').remove();
       }
 
-      // Step 1 fields: name, email/phone, suburb, service, contact preference
-      function validateStep1(result) {
+      function validateForm() {
+        var result = { isValid: true, firstInvalid: null, errorMessages: [] };
+
         var name = $('#contact_name').val().trim();
         if (!name) {
           markInvalid(result, '#contact_name', 'Name is required');
@@ -1374,18 +1344,6 @@
           markValid('#contact_service');
         }
 
-        var contactPreference = $('#contact_preference').val();
-        if (!contactPreference) {
-          markInvalid(result, '#contact_preference', 'Please select how you want to be contacted');
-        } else {
-          markValid('#contact_preference');
-        }
-
-        return service;
-      }
-
-      // Step 2 fields: conditional house characteristics (only required for Home Cleaning)
-      function validateStep2(result, service) {
         if (service === 'home_cleaning') {
           var bedrooms = parseInt($('#contact_bedrooms').val());
           var bathrooms = parseFloat($('#contact_bathrooms').val());
@@ -1402,6 +1360,15 @@
             markValid('#contact_bathrooms');
           }
         }
+
+        var contactPreference = $('#contact_preference').val();
+        if (!contactPreference) {
+          markInvalid(result, '#contact_preference', 'Please select how you want to be contacted');
+        } else {
+          markValid('#contact_preference');
+        }
+
+        return result;
       }
 
       function showValidationErrors(result) {
@@ -1426,73 +1393,35 @@
         }
       }
 
-      // Switches between the two form steps and keeps the step indicator in sync
-      function goToStep(step) {
-        if (step === 2) {
-          $('#formStep1').hide();
-          $('#formStep2').show();
-          $('#stepDot1').removeClass('active').addClass('completed');
-          $('#stepDot2').addClass('active');
-        } else {
-          $('#formStep2').hide();
-          $('#formStep1').show();
-          $('#stepDot2').removeClass('active');
-          $('#stepDot1').addClass('active').removeClass('completed');
-        }
-        var $form = $('#contactForm');
-        if ($form.length) {
-          $('html, body').animate({
-            scrollTop: $form.offset().top - 100
-          }, 300);
-        }
-      }
-
-      // Step 1 "Continue" — validate the essentials, then advance to step 2
-      $('#step1ContinueBtn').on('click', function() {
-        var result = { isValid: true, firstInvalid: null, errorMessages: [] };
-        validateStep1(result);
-
-        if (!result.isValid) {
-          showValidationErrors(result);
-          return;
-        }
-
-        $('#formErrorSummary').hide();
-        goToStep(2);
-      });
-
-      // Step 2 "Back" — no validation needed going backward
-      $('#step2BackBtn').on('click', function() {
-        goToStep(1);
-      });
-
       // Form submission handling
       $('#contactForm').on('submit', function(e) {
         e.preventDefault();
 
-        var result = { isValid: true, firstInvalid: null, errorMessages: [] };
-        var service = validateStep1(result);
-        validateStep2(result, service);
+        // A field no real visitor sees or fills; treat a non-empty value as spam
+        // and no-op without hitting Formspark or signaling anything back.
+        if ($('#contact_company').val()) {
+          showSuccessOverlay();
+          this.reset();
+          return false;
+        }
+
+        var result = validateForm();
 
         if (!result.isValid) {
-          // If the offending field lives on step 1 (which may be hidden while on step 2), show it first
-          if (result.firstInvalid && result.firstInvalid.closest('#formStep1').length) {
-            goToStep(1);
-          }
           showValidationErrors(result);
           return false;
         }
 
         // All valid — hide any previous error summary
         $('#formErrorSummary').hide();
-        
+
         var FORMSPARK_FORM_ID = 'ZPWShfMhL';
         var FORMSPARK_URL = 'https://submit-form.com/' + FORMSPARK_FORM_ID;
-        
+
         // Show loading state
         var $submitBtn = $('#submitBtn');
         $submitBtn.prop('disabled', true).addClass('loading');
-        
+
         // Collect form data
         var formData = {
           name: $('#contact_name').val().trim(),
@@ -1505,16 +1434,16 @@
           contact_preference: $('#contact_preference option:selected').text(),
           message: $('#contact_message').val().trim()
         };
-        
+
         // Add conditional fields based on service type
         var serviceType = $('#contact_service').val();
-        
+
         if (serviceType === 'home_cleaning') {
           formData.bedrooms = $('#contact_bedrooms').val();
           formData.bathrooms = $('#contact_bathrooms').val();
           formData.other_rooms = $('#contact_other_rooms').val();
         }
-        
+
         if (serviceType === 'end_of_lease') {
           formData.last_cleaning = $('#contact_last_cleaning').val() || 'Not specified';
           formData.oven_cleaning = $('#contact_oven_cleaning').is(':checked') ? 'Yes' : 'No';
@@ -1522,15 +1451,20 @@
         }
         // Store form reference for reset
         var form = this;
-        
-        // Submit to Formspark via AJAX
-        $.ajax({
-          url: FORMSPARK_URL,
+
+        // Submit to Formspark
+        fetch(FORMSPARK_URL, {
           method: 'POST',
-          contentType: 'application/json',
-          dataType: 'json',
-          data: JSON.stringify(formData),
-          success: function(response) {
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        })
+          .then(function(response) {
+            if (!response.ok) {
+              throw new Error('Request failed with status ' + response.status);
+            }
+            return response.json();
+          })
+          .then(function() {
             // Show success overlay
             showSuccessOverlay();
 
@@ -1546,49 +1480,34 @@
             // Reset conditional sections
             $('#home_cleaning_section').hide();
             $('#end_of_lease_section').hide();
-            
+
             // Reset quantity selectors
             $('#contact_bedrooms').val(1);
             $('#contact_bathrooms').val(1);
             $('#contact_other_rooms').val(0);
-
-            // Reset the two-step form back to step 1 for the next visitor
-            goToStep(1);
-          },
-          error: function(xhr, status, error) {
+          })
+          .catch(function(error) {
             // Show error message
-            alert('Sorry, there was an error submitting your request. Please try again or contact us directly.\n\nError: ' + (error || 'Unknown error'));
-            console.error('Form submission error:', status, error);
-          },
-          complete: function() {
+            alert('Sorry, there was an error submitting your request. Please try again or contact us directly.\n\nError: ' + (error && error.message ? error.message : 'Unknown error'));
+            console.error('Form submission error:', error);
+          })
+          .finally(function() {
             // Re-enable submit button
             $submitBtn.prop('disabled', false).removeClass('loading');
-          }
-        });
+          });
       });
       
       // Success overlay functions
-      var successTimeout;
-      
+      // No auto-dismiss timer: a lead confirmation shouldn't disappear on its own
+      // before a user has had a chance to read it — closing is a manual action.
       function showSuccessOverlay() {
-        var overlay = $('#successOverlay');
-        overlay.removeClass('hiding').addClass('show');
-        
-        // Auto-hide after 8 seconds
-        successTimeout = setTimeout(function() {
-          hideSuccessOverlay();
-        }, 8000);
+        $('#successOverlay').removeClass('hiding').addClass('show');
       }
-      
+
       function hideSuccessOverlay() {
         var overlay = $('#successOverlay');
         overlay.addClass('hiding');
-        
-        // Clear the timeout if manually closed
-        if (successTimeout) {
-          clearTimeout(successTimeout);
-        }
-        
+
         // Remove the overlay after animation completes
         setTimeout(function() {
           overlay.removeClass('show hiding');
